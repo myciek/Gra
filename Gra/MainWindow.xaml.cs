@@ -29,7 +29,7 @@ namespace Gra
         public MainWindow()
         {
             InitializeComponent();
-            textBox.Text = Player.x.ToString() + " , "+ Player.y.ToString();
+
             mapa.TworzenieMapy();
 
 
@@ -56,7 +56,7 @@ namespace Gra
                 int poley = Player.y;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Wschod(pole, Player);
-                textBox.Text = Player.x.ToString() + " , " + Player.y.ToString();
+                textBox.Text = textBox.Text + Player.x.ToString() + " , " + Player.y.ToString() + "\n";
             }
         }
 
@@ -70,7 +70,7 @@ namespace Gra
                 int poley = Player.y;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Zachod(pole, Player);
-                textBox.Text = Player.x.ToString() + " , " + Player.y.ToString();
+                textBox.Text = textBox.Text + Player.x.ToString() + " , " + Player.y.ToString() + "\n";
             }
         }
 
@@ -82,7 +82,7 @@ namespace Gra
                 int poley = Player.y + 1;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Poludnie(pole, Player);
-                textBox.Text = Player.x.ToString() + " , " + Player.y.ToString();
+                textBox.Text = textBox.Text + Player.x.ToString() + " , " + Player.y.ToString() + "\n";
             }
         }
 
@@ -94,8 +94,25 @@ namespace Gra
                 int poley = Player.y - 1;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Polnoc(pole, Player);
-                textBox.Text = Player.x.ToString() + " , " + Player.y.ToString();
+                textBox.Text = textBox.Text + Player.x.ToString() + " , " + Player.y.ToString() + "\n";
             }
+        }
+
+        private void LookButton_Click(object sender, RoutedEventArgs e)
+        {
+            int polex = Player.x;
+            int poley = Player.y;
+            Pole pole = mapa.mapa[polex, poley];
+            if (pole.rodzaj == Pole.Rodzaj.Puste)
+            {
+                textBox.Text = textBox.Text + "Widzisz pustą podłogę \n";
+            }
+
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Environment.Exit(1);
         }
     }
 }
