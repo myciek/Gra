@@ -12,7 +12,9 @@ namespace Gra
         public int wysokoscMapy { get; private set; }//okreslaja wymiary mapy
         public int szerokoscMapy { get; private set; }//
         public Pole[,] mapa;
-
+        public bool bladWczytywania { get; private set; }//sluzy do poindormowania uzykownika, ze dane ktore chce wczytac sa bledne
+        public List<string> tekst = new List<string>();//przechowuje dane ktore maja byc wyswietlane uzytkownikowi
+        public string wypisywanie;//jest to tekst ktory uzywtkownik widzi na ekranie
         public Mapa(int wyskosc, int szerokosc)
         {
             wysokoscMapy = wyskosc;
@@ -21,7 +23,7 @@ namespace Gra
 
 
         }
-        public void TworzenieMapy()
+        public void TworzenieMapy()//tworzy nowa mape o podanych wymiarach
         {
             mapa = new Pole[wysokoscMapy, szerokoscMapy];
             for (int i = 0; i < wysokoscMapy; i++)
@@ -34,7 +36,7 @@ namespace Gra
 
             }
         }
-        public void ZapisMapy(string nazwa)
+        public void ZapisMapy(string nazwa)//zapis mapy do pliku
         {
             FileStream plik = new FileStream(nazwa, FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter zapis = new StreamWriter(plik);
@@ -51,36 +53,65 @@ namespace Gra
 
         }
 
-        public void WczytywanieMapy(string nazwa)
+        public void WczytywanieMapy(string nazwa)//wczytuje mape z pliku
         {
-            FileStream plik = new FileStream(nazwa, FileMode.OpenOrCreate, FileAccess.Read);
-            StreamReader wczytywanie = new StreamReader(plik);
-            mapa = new Pole[wysokoscMapy, szerokoscMapy];
-            string wczytane;
-            while ((wczytane = wczytywanie.ReadLine()) != null)
+            
+                        
+            if (File.Exists(nazwa)==true)
             {
-                string[] dane = wczytane.Split(' ');
-                if (dane.Count() >= 3)
+                FileStream plik = new FileStream(nazwa, FileMode.Open, FileAccess.Read);
+                bladWczytywania = false;
+                StreamReader wczytywanie = new StreamReader(plik);
+                mapa = new Pole[wysokoscMapy, szerokoscMapy];
+                string wczytane;
+                while ((wczytane = wczytywanie.ReadLine()) != null)
                 {
-                    int x = int.Parse(dane[0]);
-                    int y = int.Parse(dane[1]);
-                    mapa[x, y] = new Pole((x), (y));
-                    if (dane[2] == "Puste")
-                        mapa[(x), (y)].rodzaj = Pole.Rodzaj.Puste;
-                    else
-                          if (dane[2] == "Sciana")
-                        mapa[(x), (y)].rodzaj = Pole.Rodzaj.Sciana;
-                    else
-                          if (dane[2] == "Przedmiot")
-                        mapa[(x), (y)].rodzaj = Pole.Rodzaj.Przedmiot;
-                    else
-                          if (dane[2] == "Drzwi")
-                        mapa[(x), (y)].rodzaj = Pole.Rodzaj.Drzwi;
+                    string[] dane = wczytane.Split(' ');
+                    if (dane.Count() >= 3)
+                    {
+                        int x, y;
+                        if (int.TryParse(dane[0], out x) == false || int.TryParse(dane[1], out y)==false)
+                            bladWczytywania = true;
+                        else
+                        {
+                            mapa[x, y] = new Pole((x), (y));
+                            if (dane[2] == "Puste")
+                                mapa[(x), (y)].rodzaj = Pole.Rodzaj.Puste;
+                            else
+                                  if (dane[2] == "Sciana")
+                                mapa[(x), (y)].rodzaj = Pole.Rodzaj.Sciana;
+                            else
+                                  if (dane[2] == "Przedmiot")
+                                mapa[(x), (y)].rodzaj = Pole.Rodzaj.Przedmiot;
+                            else
+                                  if (dane[2] == "Drzwi")
+                                mapa[(x), (y)].rodzaj = Pole.Rodzaj.Drzwi;
+                            else
+                                bladWczytywania = true;
+                        }
+                    }
                 }
+
+                wczytywanie.Close();
             }
-            wczytywanie.Close();
+            else
+                bladWczytywania = true;
+
+            
 
         }
+        public void WypisywanieTesktu()//dzieki tej metodzie informacje na ekranie "przesuwaja sie" gdy jest ich wiecej
+        {
+            if (tekst.Count > 10)
+               tekst.RemoveAt(0);
+            wypisywanie = null;
+            foreach(string wyrazenie in tekst)
+            {
+                wypisywanie += wyrazenie;
+            }
+        }
+            
+        
 
     }
 }

@@ -41,10 +41,7 @@ namespace Gra
             if (pole.rodzaj == Pole.Rodzaj.Puste)
                 gracz.x--;
         }
-        //public void WypisywanieWspolrzednych(Gracz gracz)
-        //{
-        //    textBox.Text = textBox.Text + gracz.x.ToString() + " , " + gracz.y.ToString() + "\n";
-        //}
+        
 
 
     }

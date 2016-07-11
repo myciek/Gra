@@ -30,10 +30,14 @@ namespace Gra
         {
             InitializeComponent();
             textBox.Text = "Witaj, wczytaj mape za pomocą Load";
-            
-            
-
-
+            NButtton.IsEnabled = false;
+            SButton.IsEnabled = false;
+            EButton.IsEnabled = false;
+            WButton.IsEnabled = false;
+            SaveButton.IsEnabled = false;
+            LookButton.IsEnabled = false;
+            UseButton.IsEnabled = false;
+            TakeButton.IsEnabled = false;
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -50,6 +54,7 @@ namespace Gra
 
         private void EButton_Click(object sender, RoutedEventArgs e)
         {
+            
             if (Player.x < (mapa.szerokoscMapy-1))
             { 
 
@@ -57,7 +62,9 @@ namespace Gra
                 int poley = Player.y;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Wschod(pole, Player);
-                textBox.Text = textBox.Text + Player.x.ToString() + " , " + Player.y.ToString() + "\n";
+                mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
             }
         }
 
@@ -71,7 +78,9 @@ namespace Gra
                 int poley = Player.y;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Zachod(pole, Player);
-                textBox.Text = textBox.Text + Player.x.ToString() + " , " + Player.y.ToString() + "\n";
+                mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
             }
         }
 
@@ -83,7 +92,9 @@ namespace Gra
                 int poley = Player.y + 1;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Poludnie(pole, Player);
-                textBox.Text = textBox.Text + Player.x.ToString() + " , " + Player.y.ToString() + "\n";
+                mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
             }
         }
 
@@ -95,7 +106,9 @@ namespace Gra
                 int poley = Player.y - 1;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Polnoc(pole, Player);
-                textBox.Text = textBox.Text + Player.x.ToString() + " , " + Player.y.ToString() + "\n";
+                mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
             }
         }
 
@@ -125,6 +138,21 @@ namespace Gra
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
             mapa.WczytywanieMapy("MapaTestowa.txt");
+            if (mapa.bladWczytywania == false)
+            {
+                textBox.Text = "Wczytano mape!\n";
+                NButtton.IsEnabled = true;
+                SButton.IsEnabled = true;
+                EButton.IsEnabled = true;
+                WButton.IsEnabled = true;
+                SaveButton.IsEnabled = true;
+                LookButton.IsEnabled = true;
+                UseButton.IsEnabled = true;
+                TakeButton.IsEnabled = true;
+            }
+            else
+                textBox.Text = "Blad wczytywania! Czyzbys grzebal w pikach?";
+
         }
     }
 }
