@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.IO;
 namespace Gra
 {
     /// <summary>
@@ -22,33 +22,29 @@ namespace Gra
     {
         Gracz Player = new Gracz(3, 3);
         Mapa mapa = new Mapa(10, 10);
-        
+        List<Przedmiot> Ekwipunek = new List<Przedmiot>();
 
       
 
         public MainWindow()
         {
             InitializeComponent();
-
-            mapa.TworzenieMapy();
-
-
+            textBox.Text = "Witaj, wczytaj mape za pomocą Load";
+            NButtton.IsEnabled = false;
+            SButton.IsEnabled = false;
+            EButton.IsEnabled = false;
+            WButton.IsEnabled = false;
+            SaveButton.IsEnabled = false;
+            LookButton.IsEnabled = false;
+            UseButton.IsEnabled = false;
+            TakeButton.IsEnabled = false;
         }
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-
-
-
-
-
-
+     
 
         private void EButton_Click(object sender, RoutedEventArgs e)
         {
+            
             if (Player.x < (mapa.szerokoscMapy-1))
             { 
 
@@ -56,7 +52,9 @@ namespace Gra
                 int poley = Player.y;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Wschod(pole, Player);
-                textBox.Text = textBox.Text + Player.x.ToString() + " , " + Player.y.ToString() + "\n";
+                mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
             }
         }
 
@@ -70,7 +68,9 @@ namespace Gra
                 int poley = Player.y;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Zachod(pole, Player);
-                textBox.Text = textBox.Text + Player.x.ToString() + " , " + Player.y.ToString() + "\n";
+                mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
             }
         }
 
@@ -82,7 +82,9 @@ namespace Gra
                 int poley = Player.y + 1;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Poludnie(pole, Player);
-                textBox.Text = textBox.Text + Player.x.ToString() + " , " + Player.y.ToString() + "\n";
+                mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
             }
         }
 
@@ -94,7 +96,9 @@ namespace Gra
                 int poley = Player.y - 1;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Polnoc(pole, Player);
-                textBox.Text = textBox.Text + Player.x.ToString() + " , " + Player.y.ToString() + "\n";
+                mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
             }
         }
 
@@ -107,12 +111,50 @@ namespace Gra
             {
                 textBox.Text = textBox.Text + "Widzisz pustą podłogę \n";
             }
+            else if (pole.rodzaj == Pole.Rodzaj.Przedmiot)
+            {
+                //skąd pobrać przedmiot do wyświetlenia opisu
+            }
 
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             System.Environment.Exit(1);
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            mapa.ZapisMapy("MapaTestowa.txt");
+
+        }
+
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            mapa.WczytywanieMapy("MapaTestowa.txt");
+            if (mapa.bladWczytywania == false)
+            {
+                textBox.Text = "Wczytano mape!\n";
+                NButtton.IsEnabled = true;
+                SButton.IsEnabled = true;
+                EButton.IsEnabled = true;
+                WButton.IsEnabled = true;
+                SaveButton.IsEnabled = true;
+                LookButton.IsEnabled = true;
+                UseButton.IsEnabled = true;
+                TakeButton.IsEnabled = true;
+            }
+            else
+                textBox.Text = "Blad wczytywania! Czyzbys grzebal w pikach?";
+
+        }
+
+        private void TakeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (pole.rodzaj == Pole.Rodzaj.Przedmiot)
+            {
+                //tutaj brakuje tego o czym wspominałem przy okazji look
+            }
         }
     }
 }

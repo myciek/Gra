@@ -41,6 +41,7 @@ namespace Gra
             if (pole.rodzaj == Pole.Rodzaj.Puste)
                 gracz.x--;
         }
+        
 
 
     }
