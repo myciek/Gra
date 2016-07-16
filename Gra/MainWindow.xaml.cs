@@ -22,7 +22,7 @@ namespace Gra
     {
         Gracz Player = new Gracz(3, 3);
         Mapa mapa = new Mapa(10, 10);
-        List<Przedmiot> Ekwipunek = new List<Przedmiot>();
+        
 
       
 
@@ -40,7 +40,17 @@ namespace Gra
             TakeButton.IsEnabled = false;
         }
 
-     
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+
+
+
+
+
+
 
         private void EButton_Click(object sender, RoutedEventArgs e)
         {
@@ -111,10 +121,6 @@ namespace Gra
             {
                 textBox.Text = textBox.Text + "Widzisz pustą podłogę \n";
             }
-            else if (pole.rodzaj == Pole.Rodzaj.Przedmiot)
-            {
-                //skąd pobrać przedmiot do wyświetlenia opisu
-            }
 
         }
 
@@ -145,16 +151,8 @@ namespace Gra
                 TakeButton.IsEnabled = true;
             }
             else
-                textBox.Text = "Blad wczytywania! Czyzbys grzebal w pikach?";
+                textBox.Text = "Blad wczytywania! Czyzbys grzebal w plikach?";
 
-        }
-
-        private void TakeButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (pole.rodzaj == Pole.Rodzaj.Przedmiot)
-            {
-                //tutaj brakuje tego o czym wspominałem przy okazji look
-            }
         }
     }
 }

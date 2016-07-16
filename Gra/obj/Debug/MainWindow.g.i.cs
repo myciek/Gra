@@ -189,12 +189,6 @@ namespace Gra {
             return;
             case 4:
             this.TakeButton = ((System.Windows.Controls.Button)(target));
-            
-            #line 13 "..\..\MainWindow.xaml"
-            this.TakeButton.Click += new System.Windows.RoutedEventHandler(this.TakeButton_Click);
-            
-            #line default
-            #line hidden
             return;
             case 5:
             this.UseButton = ((System.Windows.Controls.Button)(target));

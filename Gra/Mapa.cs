@@ -70,22 +70,26 @@ namespace Gra
                     if (dane.Count() >= 3)
                     {
                         int x, y;
+                        int id = 0,zamek=0;//tylko zeby nie wywalalo programu, usunac jak beda przedmioty
                         if (int.TryParse(dane[0], out x) == false || int.TryParse(dane[1], out y)==false)
                             bladWczytywania = true;
                         else
                         {
-                            mapa[x, y] = new Pole((x), (y));
+
                             if (dane[2] == "Puste")
-                                mapa[(x), (y)].rodzaj = Pole.Rodzaj.Puste;
+                                mapa[x, y] = new Pole(x, y);
                             else
                                   if (dane[2] == "Sciana")
-                                mapa[(x), (y)].rodzaj = Pole.Rodzaj.Sciana;
+                            {
+                                mapa[x, y] = new Pole(x, y);
+                                mapa[x, y].rodzaj = Pole.Rodzaj.Sciana;
+                            }
                             else
                                   if (dane[2] == "Przedmiot")
-                                mapa[(x), (y)].rodzaj = Pole.Rodzaj.Przedmiot;
+                                mapa[x, y] = new Pole_Z_Przedmiotem(id,x, y); 
                             else
                                   if (dane[2] == "Drzwi")
-                                mapa[(x), (y)].rodzaj = Pole.Rodzaj.Drzwi;
+                                mapa[x, y] = new Drzwi( x, y,zamek);
                             else
                                 bladWczytywania = true;
                         }

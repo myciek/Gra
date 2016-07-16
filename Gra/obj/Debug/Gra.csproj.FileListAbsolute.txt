@@ -27,17 +27,33 @@ C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\Gra\obj\Debug\Main
 C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\Gra\obj\Debug\Gra.g.resources
 C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\Gra\obj\Debug\Gra.Properties.Resources.resources
 C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\Gra\obj\Debug\Gra.csproj.GenerateResource.Cache
-J:\.Net Projekt\Gra\bin\Debug\Gra.exe.config
-J:\.Net Projekt\Gra\obj\Debug\Gra.exe
-J:\.Net Projekt\Gra\obj\Debug\Gra.pdb
-J:\.Net Projekt\Gra\bin\Debug\Gra.exe
-J:\.Net Projekt\Gra\bin\Debug\Gra.pdb
-J:\.Net Projekt\Gra\obj\Debug\Gra.csprojResolveAssemblyReference.cache
-J:\.Net Projekt\Gra\obj\Debug\MainWindow.g.cs
-J:\.Net Projekt\Gra\obj\Debug\App.g.cs
-J:\.Net Projekt\Gra\obj\Debug\Gra_MarkupCompile.cache
-J:\.Net Projekt\Gra\obj\Debug\Gra_MarkupCompile.lref
-J:\.Net Projekt\Gra\obj\Debug\MainWindow.baml
-J:\.Net Projekt\Gra\obj\Debug\Gra.g.resources
-J:\.Net Projekt\Gra\obj\Debug\Gra.Properties.Resources.resources
-J:\.Net Projekt\Gra\obj\Debug\Gra.csproj.GenerateResource.Cache
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\Gra\Gra\bin\Debug\Gra.exe.config
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\Gra\Gra\obj\Debug\Gra.exe
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\Gra\Gra\obj\Debug\Gra.pdb
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\obj\Debug\Gra.exe
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\obj\Debug\Gra.pdb
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\bin\Debug\Gra.exe
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\bin\Debug\Gra.pdb
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\obj\Debug\Gra.csprojResolveAssemblyReference.cache
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\obj\Debug\MainWindow.g.cs
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\obj\Debug\App.g.cs
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\obj\Debug\Gra_MarkupCompile.cache
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\obj\Debug\Gra_MarkupCompile.lref
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\obj\Debug\MainWindow.baml
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\obj\Debug\Gra.g.resources
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\obj\Debug\Gra.Properties.Resources.resources
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\obj\Debug\Gra.csproj.GenerateResource.Cache
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\bin\Debug\Gra.exe.config
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\Gra.exe
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\Gra.pdb
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\bin\Debug\Gra.exe
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\bin\Debug\Gra.pdb
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\Gra.csprojResolveAssemblyReference.cache
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\MainWindow.g.cs
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\App.g.cs
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\Gra_MarkupCompile.cache
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\Gra_MarkupCompile.lref
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\MainWindow.baml
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\Gra.g.resources
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\Gra.Properties.Resources.resources
+C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\Gra.csproj.GenerateResource.Cache
