@@ -25,10 +25,6 @@ namespace Gra
            x = X;
            y = Y;
         rodzaj = Rodzaj.Puste;
-
        }
-
-
-
    }
 }

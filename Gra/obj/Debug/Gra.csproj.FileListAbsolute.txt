@@ -57,3 +57,17 @@ C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\MainWindow.baml
 C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\Gra.g.resources
 C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\Gra.Properties.Resources.resources
 C:\Users\Maciek\Source\Repos\Zaraz-sie-zdenerwuje\Gra\obj\Debug\Gra.csproj.GenerateResource.Cache
+J:\.Net Projekt\Gra\bin\Debug\Gra.exe.config
+J:\.Net Projekt\Gra\obj\Debug\Gra.exe
+J:\.Net Projekt\Gra\obj\Debug\Gra.pdb
+J:\.Net Projekt\Gra\bin\Debug\Gra.exe
+J:\.Net Projekt\Gra\bin\Debug\Gra.pdb
+J:\.Net Projekt\Gra\obj\Debug\Gra.csprojResolveAssemblyReference.cache
+J:\.Net Projekt\Gra\obj\Debug\MainWindow.g.cs
+J:\.Net Projekt\Gra\obj\Debug\App.g.cs
+J:\.Net Projekt\Gra\obj\Debug\Gra_MarkupCompile.cache
+J:\.Net Projekt\Gra\obj\Debug\Gra_MarkupCompile.lref
+J:\.Net Projekt\Gra\obj\Debug\MainWindow.baml
+J:\.Net Projekt\Gra\obj\Debug\Gra.g.resources
+J:\.Net Projekt\Gra\obj\Debug\Gra.Properties.Resources.resources
+J:\.Net Projekt\Gra\obj\Debug\Gra.csproj.GenerateResource.Cache

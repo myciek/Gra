@@ -44,31 +44,31 @@ namespace Gra
         {
 
         }
-
-
-
-
-
-
-
-
+        
         private void EButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            if (Player.x < (mapa.szerokoscMapy-1))
+           if (Player.x < (mapa.szerokoscMapy-1))
             { 
-
                 int polex = Player.x + 1;
                 int poley = Player.y;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Wschod(pole, Player);
+                if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                {
+                    mapa.tekst.Add("Napotykasz ścianę \n");
+                    mapa.WypisywanieTesktu();
+                    textBox.Text = mapa.wypisywanie;
+                }
+                else
                 mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
-        }
-
-     
+           else
+           mapa.tekst.Add("Napotykasz ścianę \n");
+           mapa.WypisywanieTesktu();
+           textBox.Text = mapa.wypisywanie;
+        }            
         
         private void WButton_Click(object sender, RoutedEventArgs e)
         {
@@ -78,10 +78,21 @@ namespace Gra
                 int poley = Player.y;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Zachod(pole, Player);
+                if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                {
+                    mapa.tekst.Add("Napotykasz ścianę \n");
+                    mapa.WypisywanieTesktu();
+                    textBox.Text = mapa.wypisywanie;
+                }
+                else
                 mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
+            else
+            mapa.tekst.Add("Napotykasz ścianę \n");
+            mapa.WypisywanieTesktu();
+            textBox.Text = mapa.wypisywanie;
         }
 
         private void SButton_Click(object sender, RoutedEventArgs e)
@@ -92,10 +103,21 @@ namespace Gra
                 int poley = Player.y + 1;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Poludnie(pole, Player);
+                if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                {
+                    mapa.tekst.Add("Napotykasz ścianę \n");
+                    mapa.WypisywanieTesktu();
+                    textBox.Text = mapa.wypisywanie;
+                }
+                else
                 mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
+            else
+            mapa.tekst.Add("Napotykasz ścianę \n");
+            mapa.WypisywanieTesktu();
+            textBox.Text = mapa.wypisywanie;
         }
 
         private void NButtton_Click(object sender, RoutedEventArgs e)
@@ -106,10 +128,21 @@ namespace Gra
                 int poley = Player.y - 1;
                 Pole pole = mapa.mapa[polex, poley];
                 Player.Polnoc(pole, Player);
+                if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                {
+                    mapa.tekst.Add("Napotykasz ścianę \n");
+                    mapa.WypisywanieTesktu();
+                    textBox.Text = mapa.wypisywanie;
+                }
+                else
                 mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
+            else
+            mapa.tekst.Add("Napotykasz ścianę \n");
+            mapa.WypisywanieTesktu();
+            textBox.Text = mapa.wypisywanie;
         }
 
         private void LookButton_Click(object sender, RoutedEventArgs e)

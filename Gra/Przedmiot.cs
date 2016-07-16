@@ -26,9 +26,10 @@ namespace Gra
 
         }
 
-        public void NaZiemi()
+        public void NaZiemi(Mapa mapa)
         {
-            textBox.Text = textBox.Text + string.Format("Twoją uwagę zwraca leżący na ziemi {0} \n", opisziemia); //czemu tutaj nie widzi textboksu
+            mapa.tekst.Add(string.Format("Twoją uwagę zwraca leżący na ziemi {0} \n", opisziemia));
+            mapa.WypisywanieTesktu();
         }
     }
 }

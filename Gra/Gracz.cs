@@ -16,7 +16,6 @@ namespace Gra
         {
             x = X;
             y = Y;
-
         }
 
 
@@ -41,8 +40,5 @@ namespace Gra
             if (pole.rodzaj == Pole.Rodzaj.Puste)
                 gracz.x--;
         }
-        
-
-
-    }
+   }
 }
