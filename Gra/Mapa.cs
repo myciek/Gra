@@ -30,7 +30,7 @@ namespace Gra
             {
                 for (int j = 0; j < szerokoscMapy; j++)
                 {
-                    mapa[i, j] = new Pole(i, j);
+                    mapa[i, j] = new Pole(i, j, 0);
                 }
 
 
@@ -44,7 +44,11 @@ namespace Gra
             {
                 for (int j = 0; j < szerokoscMapy; j++)
                 {
-                    zapis.WriteLine(mapa[i, j].x + " " + mapa[i, j].y + " " + mapa[i, j].rodzaj);
+                    if(mapa[i,j].rodzaj==Pole.Rodzaj.Przedmiot || mapa[i, j].rodzaj == Pole.Rodzaj.Drzwi)
+                    zapis.WriteLine(mapa[i, j].x + " " + mapa[i, j].y + " " + mapa[i, j].rodzaj + " " + mapa[i,j].idPrzedmiotu);
+                    else
+                        zapis.WriteLine(mapa[i, j].x + " " + mapa[i, j].y + " " + mapa[i, j].rodzaj + " 0");
+
                 }
 
             }
@@ -67,29 +71,35 @@ namespace Gra
                 while ((wczytane = wczytywanie.ReadLine()) != null)
                 {
                     string[] dane = wczytane.Split(' ');
-                    if (dane.Count() >= 3)
+                    if (dane.Count() >= 4)
                     {
-                        int x, y;
-                        int id = 0,zamek=0;//tylko zeby nie wywalalo programu, usunac jak beda przedmioty
+                        int x, y,id=0;
+                        
                         if (int.TryParse(dane[0], out x) == false || int.TryParse(dane[1], out y)==false)
                             bladWczytywania = true;
                         else
                         {
 
                             if (dane[2] == "Puste")
-                                mapa[x, y] = new Pole(x, y);
+                                mapa[x, y] = new Pole(x, y, 0);
                             else
                                   if (dane[2] == "Sciana")
                             {
-                                mapa[x, y] = new Pole(x, y);
+                                mapa[x, y] = new Pole(x, y, 0);
                                 mapa[x, y].rodzaj = Pole.Rodzaj.Sciana;
                             }
                             else
                                   if (dane[2] == "Przedmiot")
-                                mapa[x, y] = new Pole_Z_Przedmiotem(id,x, y); 
+                            {
+                                mapa[x, y] = new Pole(x, y, id);
+                                mapa[x, y].rodzaj = Pole.Rodzaj.Przedmiot;
+                            }
                             else
                                   if (dane[2] == "Drzwi")
-                                mapa[x, y] = new Drzwi( x, y,zamek);
+                            {
+                                mapa[x, y] = new Pole(x, y, id);
+                                mapa[x, y].rodzaj = Pole.Rodzaj.Drzwi;
+                            }
                             else
                                 bladWczytywania = true;
                         }

@@ -64,7 +64,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Drzwi.cs" />
     <Compile Include="Gracz.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -74,7 +73,6 @@
   <ItemGroup>
     <Compile Include="Mapa.cs" />
     <Compile Include="Pole.cs" />
-    <Compile Include="Pole_Z_Przedmiotem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

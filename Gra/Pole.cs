@@ -11,6 +11,7 @@ namespace Gra
    {
       public int x { get; private set; }//
       public int y { get; private set; }//wspolrzedne komorek
+        public int idPrzedmiotu;//0 dla pustego pola, dla przedmiotow numer
 
       public enum Rodzaj
        {
@@ -20,11 +21,14 @@ namespace Gra
            Drzwi
        };//okresla co znajduje sie na polu
        public Rodzaj rodzaj;
-       public Pole(int X,int Y)
+       public Pole(int X,int Y,int ID)
        {
            x = X;
            y = Y;
-        rodzaj = Rodzaj.Puste;
+            if (ID == 0)
+                rodzaj = Rodzaj.Puste;
+            else
+                idPrzedmiotu = ID;
        }
    }
 }
