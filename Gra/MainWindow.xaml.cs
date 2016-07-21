@@ -22,10 +22,11 @@ namespace Gra
     {
         Gracz Player = new Gracz(3, 3);
         Mapa mapa = new Mapa(10, 10);
+
         
-
-      
-
+       
+        Przedmiot klucz = new Przedmiot("Złoty Klucz", "Złoty klucz, wydaje się pasować do jakichś drzwi", "połyskujący w mroku złoty przedmiot.", 1);
+        Przedmiot[] tablica = new Przedmiot[] {klucz};
         public MainWindow()
         {
             InitializeComponent();
@@ -39,6 +40,7 @@ namespace Gra
             UseButton.IsEnabled = false;
             TakeButton.IsEnabled = false;
         }
+        
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -153,7 +155,13 @@ namespace Gra
             if (pole.rodzaj == Pole.Rodzaj.Puste)
             {
                 textBox.Text = textBox.Text + "Widzisz pustą podłogę \n";
+                mapa.tekst.Add("Widzisz pustą podłogę \n");
+                mapa.WypisywanieTesktu();
             }
+            else if (pole.rodzaj == Pole.Rodzaj.Przedmiot)
+                {
+
+                }
 
         }
 
@@ -185,6 +193,11 @@ namespace Gra
             }
             else
                 textBox.Text = "Blad wczytywania! Czyzbys grzebal w plikach?";
+
+        }
+
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }

@@ -44,8 +44,8 @@ namespace Gra
             {
                 for (int j = 0; j < szerokoscMapy; j++)
                 {
-                    if(mapa[i,j].rodzaj==Pole.Rodzaj.Przedmiot || mapa[i, j].rodzaj == Pole.Rodzaj.Drzwi)
-                    zapis.WriteLine(mapa[i, j].x + " " + mapa[i, j].y + " " + mapa[i, j].rodzaj + " " + mapa[i,j].idPrzedmiotu);
+                    if (mapa[i, j].rodzaj == Pole.Rodzaj.Przedmiot || mapa[i, j].rodzaj == Pole.Rodzaj.Drzwi)
+                        zapis.WriteLine(mapa[i, j].x + " " + mapa[i, j].y + " " + mapa[i, j].rodzaj + " " + mapa[i, j].idPrzedmiotu);
                     else
                         zapis.WriteLine(mapa[i, j].x + " " + mapa[i, j].y + " " + mapa[i, j].rodzaj + " 0");
 
@@ -59,9 +59,9 @@ namespace Gra
 
         public void WczytywanieMapy(string nazwa)//wczytuje mape z pliku
         {
-            
-                        
-            if (File.Exists(nazwa)==true)
+
+
+            if (File.Exists(nazwa) == true)
             {
                 FileStream plik = new FileStream(nazwa, FileMode.Open, FileAccess.Read);
                 bladWczytywania = false;
@@ -73,9 +73,9 @@ namespace Gra
                     string[] dane = wczytane.Split(' ');
                     if (dane.Count() >= 4)
                     {
-                        int x, y,id=0;
-                        
-                        if (int.TryParse(dane[0], out x) == false || int.TryParse(dane[1], out y)==false)
+                        int x, y, id = 0;
+
+                        if (int.TryParse(dane[0], out x) == false || int.TryParse(dane[1], out y) == false)
                             bladWczytywania = true;
                         else
                         {
@@ -111,21 +111,21 @@ namespace Gra
             else
                 bladWczytywania = true;
 
-            
+
 
         }
         public void WypisywanieTesktu()//dzieki tej metodzie informacje na ekranie "przesuwaja sie" gdy jest ich wiecej
         {
             if (tekst.Count > 10)
-               tekst.RemoveAt(0);
+                tekst.RemoveAt(0);
             wypisywanie = null;
-            foreach(string wyrazenie in tekst)
+            foreach (string wyrazenie in tekst)
             {
                 wypisywanie += wyrazenie;
             }
         }
-            
-        
+
+
 
     }
 }
