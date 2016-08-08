@@ -29,14 +29,14 @@ namespace Gra
         
         public MainWindow()
         {
-            mapa.TworzenieMapy();
+            
             InitializeComponent();
             textBox.Text = "Witaj, wczytaj mape za pomocą Load";
             NButtton.IsEnabled = false;
             SButton.IsEnabled = false;
             EButton.IsEnabled = false;
             WButton.IsEnabled = false;
-            //SaveButton.IsEnabled = false;
+            SaveButton.IsEnabled = false;
             LookButton.IsEnabled = false;
             UseButton.IsEnabled = false;
             TakeButton.IsEnabled = false;
