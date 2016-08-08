@@ -12,8 +12,7 @@ namespace Gra
         public int x { get; private set; }//
         public int y { get; private set; }//wspolrzedne komorek
         public int idPrzedmiotu;//0 dla pustego pola, dla przedmiotow numer
-        Przedmiot przedmiot;
-        
+              
         public enum Rodzaj
         {
             Puste,
@@ -28,12 +27,12 @@ namespace Gra
             y = Y;
             if (ID == 0)
             {
-                rodzaj = Rodzaj.Puste;
-                przedmiot = null;
+                rodzaj = Rodzaj.Sciana;
+                
             }
             else
             idPrzedmiotu = ID;
-            przedmiot.id = ID;
+            
         }
     }
 }

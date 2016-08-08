@@ -15,10 +15,18 @@ namespace Gra
         public bool bladWczytywania { get; private set; }//sluzy do poindormowania uzykownika, ze dane ktore chce wczytac sa bledne
         public List<string> tekst = new List<string>();//przechowuje dane ktore maja byc wyswietlane uzytkownikowi
         public string wypisywanie;//jest to tekst ktory uzywtkownik widzi na ekranie
-        public Mapa(int wyskosc, int szerokosc)
+        public List<Przedmiot> spisPrzedmiotow ;//przechowuje wszystkie przedmioty
+        public int koniecX { get; private set; }//wspolrzedne do ktorych gracz musi sie dostac, zeby dostac sie na kolejny poziom
+        public int koniecY { get; private set; }//
+        public int numerMapy;//okresla ktora mape wczytac
+        public string[] tekstyPustePole = new string[] { "a", "b", "c" }; //zbior tekstow, ktore moga wyswietlic sie gdy patrzysz na puste pole(zeby nie bylo nudno!)
+        public Mapa(int wyskosc, int szerokosc,int x, int y)
         {
             wysokoscMapy = wyskosc;
             szerokoscMapy = szerokosc;
+            koniecX = x;
+            koniecY = y;
+            
 
 
 
@@ -36,9 +44,9 @@ namespace Gra
 
             }
         }
-        public void ZapisMapy(string nazwa)//zapis mapy do pliku
+        public void ZapisMapy()//zapis mapy do pliku
         {
-            FileStream plik = new FileStream(nazwa, FileMode.OpenOrCreate, FileAccess.Write);
+            FileStream plik = new FileStream("Mapa" + numerMapy + ".txt", FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter zapis = new StreamWriter(plik);
             for (int i = 0; i < wysokoscMapy; i++)
             {
@@ -57,62 +65,68 @@ namespace Gra
 
         }
 
-        public void WczytywanieMapy(string nazwa)//wczytuje mape z pliku
+        public void WczytywanieMapy(Gracz Player)//wczytuje mape z pliku
         {
-
-
-            if (File.Exists(nazwa) == true)
+            if (Player.poziom == 5)
             {
-                FileStream plik = new FileStream(nazwa, FileMode.Open, FileAccess.Read);
-                bladWczytywania = false;
-                StreamReader wczytywanie = new StreamReader(plik);
-                mapa = new Pole[wysokoscMapy, szerokoscMapy];
-                string wczytane;
-                while ((wczytane = wczytywanie.ReadLine()) != null)
+                Player.koniecGry = true;
+            }
+
+            else
+            {
+                if (File.Exists("Mapa" + numerMapy + ".txt") == true)
                 {
-                    string[] dane = wczytane.Split(' ');
-                    if (dane.Count() >= 4)
+                    FileStream plik = new FileStream("Mapa" + numerMapy + ".txt", FileMode.Open, FileAccess.Read);
+                    bladWczytywania = false;
+                    StreamReader wczytywanie = new StreamReader(plik);
+                    mapa = new Pole[wysokoscMapy, szerokoscMapy];
+                    string wczytane;
+                    while ((wczytane = wczytywanie.ReadLine()) != null)
                     {
-                        int x, y, id = 0;
-
-                        if (int.TryParse(dane[0], out x) == false || int.TryParse(dane[1], out y) == false)
-                            bladWczytywania = true;
-                        else
+                        string[] dane = wczytane.Split(' ');
+                        if (dane.Count() >= 4)
                         {
+                            int x, y, id = 0;
 
-                            if (dane[2] == "Puste")
-                                mapa[x, y] = new Pole(x, y, 0);
-                            else
-                                  if (dane[2] == "Sciana")
-                            {
-                                mapa[x, y] = new Pole(x, y, 0);
-                                mapa[x, y].rodzaj = Pole.Rodzaj.Sciana;
-                            }
-                            else
-                                  if (dane[2] == "Przedmiot")
-                            {
-                                mapa[x, y] = new Pole(x, y, id);
-                                mapa[x, y].rodzaj = Pole.Rodzaj.Przedmiot;
-                            }
-                            else
-                                  if (dane[2] == "Drzwi")
-                            {
-                                mapa[x, y] = new Pole(x, y, id);
-                                mapa[x, y].rodzaj = Pole.Rodzaj.Drzwi;
-                            }
-                            else
+                            if (int.TryParse(dane[0], out x) == false || int.TryParse(dane[1], out y) == false)
                                 bladWczytywania = true;
+                            else
+                            {
+
+                                if (dane[2] == "Puste")
+                                    mapa[x, y] = new Pole(x, y, 0);
+                                else
+                                      if (dane[2] == "Sciana")
+                                {
+                                    mapa[x, y] = new Pole(x, y, 0);
+                                    mapa[x, y].rodzaj = Pole.Rodzaj.Sciana;
+                                }
+                                else
+                                      if (dane[2] == "Przedmiot")
+                                {
+                                    mapa[x, y] = new Pole(x, y, id);
+                                    mapa[x, y].rodzaj = Pole.Rodzaj.Przedmiot;
+                                }
+                                else
+                                      if (dane[2] == "Drzwi")
+                                {
+                                    mapa[x, y] = new Pole(x, y, id);
+                                    mapa[x, y].rodzaj = Pole.Rodzaj.Drzwi;
+                                }
+                                else
+                                    bladWczytywania = true;
+                            }
                         }
                     }
+
+                    wczytywanie.Close();
                 }
+                else
+                    bladWczytywania = true;
 
-                wczytywanie.Close();
+
+
             }
-            else
-                bladWczytywania = true;
-
-
-
         }
         public void WypisywanieTesktu()//dzieki tej metodzie informacje na ekranie "przesuwaja sie" gdy jest ich wiecej
         {
@@ -125,7 +139,101 @@ namespace Gra
             }
         }
 
+        public void WczytywaniePrzedmiotow()//wczytuje przedmioty,sa zapisane w pilku
+        {
+            if (File.Exists("Przedmioty.txt") == true)
+            {
+                FileStream plik = new FileStream("Przedmioty.txt", FileMode.Open, FileAccess.Read);
+                bladWczytywania = false;
+                StreamReader wczytywanie = new StreamReader(plik);
+                string wczytane;
+                spisPrzedmiotow = new List<Przedmiot>();
+                
+                while ((wczytane = wczytywanie.ReadLine()) != null)
+                {
+                    string[] dane = wczytane.Split(';');
+                    if (dane.Count() >= 4)
+                    {
+                        
+                        int id;
+                        
+                        if (int.TryParse(dane[3], out id) == false)
+                            bladWczytywania = true;
+                        else
+                        {
+                            spisPrzedmiotow.Add(new Przedmiot(dane[0], dane[1], dane[2], id));
+                            
+                           
+                        }
+                    }
+                }
 
+
+            }
+
+        }
+
+        public void KonczeniePoziomu(ref Gracz Player)
+        {
+             
+           if(Player.x==koniecX && Player.y==koniecY)
+            {
+                Player.poziom++;
+                
+                switch(Player.poziom)
+                {
+                    case 0:
+                        {
+                            break;
+                        }
+
+                    case 1:
+                        {
+                            koniecX = 24;
+                            koniecY = 11;
+                            Player.x = 0;
+                            Player.y = 10;
+                            break;
+                        }
+                    case 2:
+                        {
+                            koniecX = 25;
+                            koniecY = 5;
+                            Player.x = 0;
+                            Player.y = 5;
+                            break;
+                        }
+                    case 3:
+                        {
+                            koniecX = 26;
+                            koniecY = 13;
+                            Player.x = 26;
+                            Player.y = 0;
+                            break;
+                        }
+                    case 4:
+                        {
+                            koniecX = 26;
+                            koniecY = 13;
+                            Player.x = 0;
+                            Player.y = 4;
+                            break;
+                        }
+                    default:
+                        {
+                            bladWczytywania = true;
+                            break;
+                        }
+                }
+                WczytywanieMapy(Player);
+            }
+            
+        }
+        public string LosowyTekst()
+        {
+            Random random = new Random();
+            return tekstyPustePole[random.Next(0, tekstyPustePole.Length)];
+        }
 
     }
 }

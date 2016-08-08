@@ -20,22 +20,23 @@ namespace Gra
     /// </summary>
     public partial class MainWindow : Window
     {
-        Gracz Player = new Gracz(3, 3);
-        Mapa mapa = new Mapa(10, 10);
+        Gracz Player = new Gracz(3, 1);
+        Mapa mapa = new Mapa(31, 27,17,9);
+        
 
         
        
-        Przedmiot klucz = new Przedmiot("Złoty Klucz", "Złoty klucz, wydaje się pasować do jakichś drzwi", "połyskujący w mroku złoty przedmiot.", 1);
-        Przedmiot[] tablica = new Przedmiot[] {klucz};
+        
         public MainWindow()
         {
+            mapa.TworzenieMapy();
             InitializeComponent();
             textBox.Text = "Witaj, wczytaj mape za pomocą Load";
             NButtton.IsEnabled = false;
             SButton.IsEnabled = false;
             EButton.IsEnabled = false;
             WButton.IsEnabled = false;
-            SaveButton.IsEnabled = false;
+            //SaveButton.IsEnabled = false;
             LookButton.IsEnabled = false;
             UseButton.IsEnabled = false;
             TakeButton.IsEnabled = false;
@@ -46,105 +47,161 @@ namespace Gra
         {
 
         }
-        
+
         private void EButton_Click(object sender, RoutedEventArgs e)
         {
-           if (Player.x < (mapa.szerokoscMapy-1))
-            { 
-                int polex = Player.x + 1;
-                int poley = Player.y;
-                Pole pole = mapa.mapa[polex, poley];
-                Player.Wschod(pole, Player);
-                if (pole.rodzaj == Pole.Rodzaj.Sciana)
-                {
-                    mapa.tekst.Add("Napotykasz ścianę \n");
-                    mapa.WypisywanieTesktu();
-                    textBox.Text = mapa.wypisywanie;
-                }
-                else
-                mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
-                mapa.WypisywanieTesktu();
-                textBox.Text = mapa.wypisywanie;
-            }
-           else
-           mapa.tekst.Add("Napotykasz ścianę \n");
-           mapa.WypisywanieTesktu();
-           textBox.Text = mapa.wypisywanie;
-        }            
-        
-        private void WButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (Player.x > 0)
+            mapa.KonczeniePoziomu(ref Player);
+            if (Player.koniecGry == false)
             {
-                int polex = Player.x - 1;
-                int poley = Player.y;
-                Pole pole = mapa.mapa[polex, poley];
-                Player.Zachod(pole, Player);
-                if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                if (Player.x < (mapa.szerokoscMapy - 1))
+                {
+                    int polex = Player.x + 1;
+                    int poley = Player.y;
+                    Pole pole = mapa.mapa[polex, poley];
+                    Player.Wschod(pole, Player);
+                    if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                    {
+                        mapa.tekst.Add("Napotykasz ścianę \n");
+                        mapa.WypisywanieTesktu();
+                        textBox.Text = mapa.wypisywanie;
+                    }
+                    else
+                    {
+                        mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                        mapa.WypisywanieTesktu();
+                        textBox.Text = mapa.wypisywanie;
+                    }
+                }
+                else
                 {
                     mapa.tekst.Add("Napotykasz ścianę \n");
                     mapa.WypisywanieTesktu();
                     textBox.Text = mapa.wypisywanie;
                 }
-                else
-                mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
-                mapa.WypisywanieTesktu();
-                textBox.Text = mapa.wypisywanie;
             }
             else
-            mapa.tekst.Add("Napotykasz ścianę \n");
-            mapa.WypisywanieTesktu();
-            textBox.Text = mapa.wypisywanie;
+            {
+                mapa.tekst.Add("GRATULACJE UKONCZYLES GRE!!! \n");
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
+            }
+        }
+
+        private void WButton_Click(object sender, RoutedEventArgs e)
+        {
+            mapa.KonczeniePoziomu(ref Player);
+            if (Player.koniecGry == false)
+            {
+                if (Player.x > 0)
+                {
+                    int polex = Player.x - 1;
+                    int poley = Player.y;
+                    Pole pole = mapa.mapa[polex, poley];
+                    Player.Zachod(pole, Player);
+                    if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                    {
+                        mapa.tekst.Add("Napotykasz ścianę \n");
+                        mapa.WypisywanieTesktu();
+                        textBox.Text = mapa.wypisywanie;
+                    }
+                    else
+                    {
+                        mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                        mapa.WypisywanieTesktu();
+                        textBox.Text = mapa.wypisywanie;
+                    }
+                }
+                else
+                {
+                    mapa.tekst.Add("Napotykasz ścianę \n");
+                    mapa.WypisywanieTesktu();
+                    textBox.Text = mapa.wypisywanie;
+                }
+            }
+            else
+            {
+                mapa.tekst.Add("GRATULACJE UKONCZYLES GRE!!! \n");
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
+            }
         }
 
         private void SButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Player.y <( mapa.wysokoscMapy - 1))
+            mapa.KonczeniePoziomu(ref Player);
+            if (Player.koniecGry == false)
             {
-                int polex = Player.x;
-                int poley = Player.y + 1;
-                Pole pole = mapa.mapa[polex, poley];
-                Player.Poludnie(pole, Player);
-                if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                if (Player.y < (mapa.wysokoscMapy - 1))
+                {
+                    int polex = Player.x;
+                    int poley = Player.y + 1;
+                    Pole pole = mapa.mapa[polex, poley];
+                    Player.Poludnie(pole, Player);
+                    if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                    {
+                        mapa.tekst.Add("Napotykasz ścianę \n");
+                        mapa.WypisywanieTesktu();
+                        textBox.Text = mapa.wypisywanie;
+                    }
+                    else
+                    {
+                        mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                        mapa.WypisywanieTesktu();
+                        textBox.Text = mapa.wypisywanie;
+                    }
+                }
+                else
                 {
                     mapa.tekst.Add("Napotykasz ścianę \n");
                     mapa.WypisywanieTesktu();
                     textBox.Text = mapa.wypisywanie;
                 }
-                else
-                mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+            }
+            else
+            {
+                mapa.tekst.Add("GRATULACJE UKONCZYLES GRE!!! \n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
-            else
-            mapa.tekst.Add("Napotykasz ścianę \n");
-            mapa.WypisywanieTesktu();
-            textBox.Text = mapa.wypisywanie;
         }
 
         private void NButtton_Click(object sender, RoutedEventArgs e)
         {
-            if (Player.y > 0)
+            mapa.KonczeniePoziomu(ref Player);
+            if (Player.koniecGry == false)
             {
-                int polex = Player.x;
-                int poley = Player.y - 1;
-                Pole pole = mapa.mapa[polex, poley];
-                Player.Polnoc(pole, Player);
-                if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                if (Player.y > 0)
+                {
+                    int polex = Player.x;
+                    int poley = Player.y - 1;
+                    Pole pole = mapa.mapa[polex, poley];
+                    Player.Polnoc(pole, Player);
+                    if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                    {
+                        mapa.tekst.Add("Napotykasz ścianę \n");
+                        mapa.WypisywanieTesktu();
+                        textBox.Text = mapa.wypisywanie;
+                    }
+                    else
+                    {
+                        mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                        mapa.WypisywanieTesktu();
+                        textBox.Text = mapa.wypisywanie;
+                    }
+                }
+                else
                 {
                     mapa.tekst.Add("Napotykasz ścianę \n");
                     mapa.WypisywanieTesktu();
                     textBox.Text = mapa.wypisywanie;
                 }
-                else
-                mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+            }
+            else
+            {
+                mapa.tekst.Add("GRATULACJE UKONCZYLES GRE!!! \n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
-            else
-            mapa.tekst.Add("Napotykasz ścianę \n");
-            mapa.WypisywanieTesktu();
-            textBox.Text = mapa.wypisywanie;
         }
 
         private void LookButton_Click(object sender, RoutedEventArgs e)
@@ -154,9 +211,10 @@ namespace Gra
             Pole pole = mapa.mapa[polex, poley];
             if (pole.rodzaj == Pole.Rodzaj.Puste)
             {
-                textBox.Text = textBox.Text + "Widzisz pustą podłogę \n";
-                mapa.tekst.Add("Widzisz pustą podłogę \n");
+                
+                mapa.tekst.Add(mapa.LosowyTekst()+"\n");
                 mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
             }
             else if (pole.rodzaj == Pole.Rodzaj.Przedmiot)
                 {
@@ -172,28 +230,41 @@ namespace Gra
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            mapa.ZapisMapy("MapaTestowa.txt");
+            mapa.ZapisMapy();
 
         }
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            mapa.WczytywanieMapy("MapaTestowa.txt");
-            if (mapa.bladWczytywania == false)
+            mapa.WczytywanieMapy(Player);
+            mapa.WczytywaniePrzedmiotow();
+            if (Player.koniecGry == true)
             {
-                textBox.Text = "Wczytano mape!\n";
+                textBox.Text = "GRATULACJE UKONCZYLES GRE!!! \n";
                 NButtton.IsEnabled = true;
                 SButton.IsEnabled = true;
                 EButton.IsEnabled = true;
                 WButton.IsEnabled = true;
-                SaveButton.IsEnabled = true;
-                LookButton.IsEnabled = true;
-                UseButton.IsEnabled = true;
-                TakeButton.IsEnabled = true;
             }
-            else
-                textBox.Text = "Blad wczytywania! Czyzbys grzebal w plikach?";
 
+            else
+            {
+                if (mapa.bladWczytywania == false)
+                {
+                    textBox.Text = "Wczytano Poziom " + Player.poziom + ".";
+                    NButtton.IsEnabled = true;
+                    SButton.IsEnabled = true;
+                    EButton.IsEnabled = true;
+                    WButton.IsEnabled = true;
+                    SaveButton.IsEnabled = true;
+                    LookButton.IsEnabled = true;
+                    UseButton.IsEnabled = true;
+                    TakeButton.IsEnabled = true;
+                }
+                else
+                    textBox.Text = "Blad wczytywania! Czyzbys grzebal w plikach?";
+
+            }
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-J:\.Net Projekt\Gra\obj\Debug\
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\obj\Debug\
 Gra
 none
 false
 DEBUG;TRACE
-J:\.Net Projekt\Gra\App.xaml
+C:\Users\Maciek\Documents\Visual Studio 2015\Projects\Gra\Gra\App.xaml
 11151548125
 
-13-1363925928
+13-1479609433
 13738642453
 MainWindow.xaml;
 

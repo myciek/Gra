@@ -11,11 +11,15 @@ namespace Gra
     {
         public int x;//
         public int y; //wspolrzedne gracza
+        public int poziom;//okresla do ktorego poziomu dotarl gracz
+        public bool koniecGry;//
 
         public Gracz(int X,int Y)
         {
             x = X;
             y = Y;
+            poziom = 0;
+            koniecGry = false;
         }
 
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gra
 {
-    class Przedmiot
+    public class Przedmiot
     {
         public string nazwa;
         public string opis;
