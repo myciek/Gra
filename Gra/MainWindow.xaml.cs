@@ -271,5 +271,23 @@ namespace Gra
         {
 
         }
+
+        private void TakeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (mapa.mapa[Player.x, Player.y].rodzaj == Pole.Rodzaj.Przedmiot)
+            {
+                mapa.PodnoszeniePrzedmiotu(Player, ref mapa.mapa[Player.x, Player.y]);
+                listBox.Items.Add(Player.ekwipunek[Player.iloscPrzedmiotow - 1].nazwa);
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
+            }
+            else
+            {
+                mapa.tekst.Add("Pole jest puste! \n");
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
+            }
+
+        }
     }
 }

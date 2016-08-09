@@ -13,6 +13,8 @@ namespace Gra
         public int y; //wspolrzedne gracza
         public int poziom;//okresla do ktorego poziomu dotarl gracz
         public bool koniecGry;//
+        public List<Przedmiot> ekwipunek;//sa w nim przechwywane dane na temat przedmiotow jakie posiada gracz
+        public int iloscPrzedmiotow;//okresla ile przedmiotow posiada gracz
 
         public Gracz(int X,int Y)
         {
@@ -20,6 +22,8 @@ namespace Gra
             y = Y;
             poziom = 0;
             koniecGry = false;
+            iloscPrzedmiotow = 0;
+            ekwipunek = new List<Przedmiot>();
         }
 
 

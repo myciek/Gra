@@ -88,7 +88,7 @@ namespace Gra
                         {
                             int x, y, id = 0;
 
-                            if (int.TryParse(dane[0], out x) == false || int.TryParse(dane[1], out y) == false)
+                            if (int.TryParse(dane[0], out x) == false || int.TryParse(dane[1], out y) == false || int.TryParse(dane[3], out id) == false)
                                 bladWczytywania = true;
                             else
                             {
@@ -233,6 +233,19 @@ namespace Gra
         {
             Random random = new Random();
             return tekstyPustePole[random.Next(0, tekstyPustePole.Length)];
+        }
+
+        public void PodnoszeniePrzedmiotu(Gracz Player, ref Pole pole)
+        {
+            
+                Player.ekwipunek.Add(spisPrzedmiotow[pole.idPrzedmiotu-1]);
+                tekst.Add("Podniosles " + spisPrzedmiotow[pole.idPrzedmiotu-1].nazwa + ". \n");
+                pole.rodzaj = Pole.Rodzaj.Puste;
+                pole.idPrzedmiotu = 0;
+                Player.iloscPrzedmiotow++;
+
+            
+            
         }
 
     }
