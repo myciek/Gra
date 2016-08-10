@@ -73,6 +73,7 @@ namespace Gra
             }
 
             else
+            numerMapy = Player.poziom;
             {
                 if (File.Exists("Mapa" + numerMapy + ".txt") == true)
                 {
@@ -94,7 +95,10 @@ namespace Gra
                             {
 
                                 if (dane[2] == "Puste")
+                                { 
                                     mapa[x, y] = new Pole(x, y, 0);
+                                mapa[x, y].rodzaj = Pole.Rodzaj.Puste;
+                                }
                                 else
                                       if (dane[2] == "Sciana")
                                 {
@@ -242,11 +246,12 @@ namespace Gra
                 tekst.Add("Podniosles " + spisPrzedmiotow[pole.idPrzedmiotu-1].nazwa + ". \n");
                 pole.rodzaj = Pole.Rodzaj.Puste;
                 pole.idPrzedmiotu = 0;
-                Player.iloscPrzedmiotow++;
-
-            
-            
+                Player.iloscPrzedmiotow++;           
         }
 
+        public void OgladaniePrzedmiotu (Gracz Player, ref Pole pole)
+        {
+            tekst.Add("Widzisz " + spisPrzedmiotow[pole.idPrzedmiotu - 1].opisziemia + ". \n");
+        }
     }
 }

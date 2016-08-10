@@ -21,11 +21,5 @@ namespace Gra
             id = Id;
 
         }
-
-        public void NaZiemi(Mapa mapa)
-        {
-            mapa.tekst.Add(string.Format("Twoją uwagę zwraca leżący na ziemi {0} \n", opisziemia));
-            mapa.WypisywanieTesktu();
-        }
     }
 }

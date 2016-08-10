@@ -67,7 +67,7 @@ namespace Gra
                     }
                     else
                     {
-                        mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                        mapa.tekst.Add("Poszedłeś na wschód. " +Player.x.ToString() + " , " + Player.y.ToString() + "\n");
                         mapa.WypisywanieTesktu();
                         textBox.Text = mapa.wypisywanie;
                     }
@@ -106,7 +106,7 @@ namespace Gra
                     }
                     else
                     {
-                        mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                        mapa.tekst.Add("Poszedłeś na zachód. " + Player.x.ToString() + " , " + Player.y.ToString() + "\n");
                         mapa.WypisywanieTesktu();
                         textBox.Text = mapa.wypisywanie;
                     }
@@ -145,7 +145,7 @@ namespace Gra
                     }
                     else
                     {
-                        mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                        mapa.tekst.Add("Poszedłeś na południe. " + Player.x.ToString() + " , " + Player.y.ToString() + "\n");
                         mapa.WypisywanieTesktu();
                         textBox.Text = mapa.wypisywanie;
                     }
@@ -184,7 +184,7 @@ namespace Gra
                     }
                     else
                     {
-                        mapa.tekst.Add(Player.x.ToString() + " , " + Player.y.ToString() + "\n");
+                        mapa.tekst.Add("Poszedłeś na północ. " + Player.x.ToString() + " , " + Player.y.ToString() + "\n");
                         mapa.WypisywanieTesktu();
                         textBox.Text = mapa.wypisywanie;
                     }
@@ -218,8 +218,10 @@ namespace Gra
             }
             else if (pole.rodzaj == Pole.Rodzaj.Przedmiot)
                 {
-
-                }
+                mapa.OgladaniePrzedmiotu(Player, ref mapa.mapa[Player.x, Player.y]);
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
+            }
 
         }
 
@@ -283,7 +285,7 @@ namespace Gra
             }
             else
             {
-                mapa.tekst.Add("Pole jest puste! \n");
+                mapa.tekst.Add("Nie masz czego tu podnieść.\n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
