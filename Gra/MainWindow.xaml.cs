@@ -291,5 +291,39 @@ namespace Gra
             }
 
         }
+
+        private void UseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBox.SelectedItem == null)
+            {
+                mapa.tekst.Add("Powietrza nie użyjesz do czego innego niz oddychanie \n!");
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
+            }
+            else {
+                string nazwa = listBox.SelectedItem.ToString();
+                Przedmiot wybranyPrzedmiot= new Przedmiot("Test","a","b",3,0,0);
+                foreach (Przedmiot przedmiot in Player.ekwipunek)
+                {
+                    if (nazwa == przedmiot.nazwa)
+                    {
+                         wybranyPrzedmiot = przedmiot;
+                    }
+
+                }
+                if(wybranyPrzedmiot.x==Player.x && wybranyPrzedmiot.y==Player.y)
+                {
+                    mapa.tekst.Add("Cos sie dzieje? \n");
+                    mapa.WypisywanieTesktu();
+                    textBox.Text = mapa.wypisywanie;
+                }
+                else
+                {
+                    mapa.tekst.Add("Sprobowales uzyc " + wybranyPrzedmiot.nazwa+ " ale nic sie nie stalo. \n");
+                    mapa.WypisywanieTesktu();
+                    textBox.Text = mapa.wypisywanie;
+                }
+        }
+        }
     }
 }

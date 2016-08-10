@@ -156,16 +156,16 @@ namespace Gra
                 while ((wczytane = wczytywanie.ReadLine()) != null)
                 {
                     string[] dane = wczytane.Split(';');
-                    if (dane.Count() >= 4)
+                    if (dane.Count() >= 6)
                     {
                         
-                        int id;
+                        int id,x,y;
                         
-                        if (int.TryParse(dane[3], out id) == false)
+                        if (int.TryParse(dane[3], out id) == false|| int.TryParse(dane[4], out x) == false || int.TryParse(dane[5], out y) == false)
                             bladWczytywania = true;
                         else
                         {
-                            spisPrzedmiotow.Add(new Przedmiot(dane[0], dane[1], dane[2], id));
+                            spisPrzedmiotow.Add(new Przedmiot(dane[0], dane[1], dane[2], id,x,y));
                             
                            
                         }
