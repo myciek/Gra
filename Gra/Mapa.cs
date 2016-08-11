@@ -12,7 +12,7 @@ namespace Gra
         public int wysokoscMapy { get; private set; }//okreslaja wymiary mapy
         public int szerokoscMapy { get; private set; }//
         public Pole[,] mapa;
-        public bool bladWczytywania { get; private set; }//sluzy do poindormowania uzykownika, ze dane ktore chce wczytac sa bledne
+        public bool bladWczytywania; //sluzy do poindormowania uzykownika, ze dane ktore chce wczytac sa bledne
         public List<string> tekst = new List<string>();//przechowuje dane ktore maja byc wyswietlane uzytkownikowi
         public string wypisywanie;//jest to tekst ktory uzywtkownik widzi na ekranie
         public List<Przedmiot> spisPrzedmiotow ;//przechowuje wszystkie przedmioty

@@ -20,7 +20,7 @@ namespace Gra
     /// </summary>
     public partial class MainWindow : Window
     {
-        Gracz Player = new Gracz(3, 1);
+        Gracz Player = new Gracz(3, 1,0);
         Mapa mapa = new Mapa(31, 27,17,9);
         
 
@@ -233,13 +233,20 @@ namespace Gra
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             mapa.ZapisMapy();
+            Player.Zapis();
 
         }
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            mapa.WczytywanieMapy(Player);
             mapa.WczytywaniePrzedmiotow();
+            Player.Wczytaj(ref mapa);
+            foreach(Przedmiot przedmiot in Player.ekwipunek)
+            {
+                listBox.Items.Add(przedmiot.nazwa);
+            }
+            mapa.WczytywanieMapy(Player);
+            
             if (Player.koniecGry == true)
             {
                 textBox.Text = "GRATULACJE UKONCZYLES GRE!!! \n";
@@ -296,7 +303,7 @@ namespace Gra
         {
             if (listBox.SelectedItem == null)
             {
-                mapa.tekst.Add("Powietrza nie użyjesz do czego innego niz oddychanie \n!");
+                mapa.tekst.Add("Powietrza nie użyjesz do czego innego niz oddychanie! \n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
