@@ -197,6 +197,8 @@ namespace Gra
                             koniecY = 11;
                             Player.x = 0;
                             Player.y = 10;
+                            tekst.Clear();
+                            tekst.Add("Ukukonczyles poziom \n");
                             break;
                         }
                     case 2:
@@ -205,6 +207,8 @@ namespace Gra
                             koniecY = 5;
                             Player.x = 0;
                             Player.y = 5;
+                            tekst.Clear();
+                            tekst.Add("Ukukonczyles poziom \n");
                             break;
                         }
                     case 3:
@@ -213,6 +217,8 @@ namespace Gra
                             koniecY = 13;
                             Player.x = 26;
                             Player.y = 0;
+                            tekst.Clear();
+                            tekst.Add("Ukukonczyles poziom \n");
                             break;
                         }
                     case 4:
@@ -221,6 +227,8 @@ namespace Gra
                             koniecY = 13;
                             Player.x = 0;
                             Player.y = 4;
+                            tekst.Clear();
+                            tekst.Add("Ukukonczyles poziom \n");
                             break;
                         }
                     default:
