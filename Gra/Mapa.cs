@@ -19,7 +19,7 @@ namespace Gra
         public int koniecX { get; private set; }//wspolrzedne do ktorych gracz musi sie dostac, zeby dostac sie na kolejny poziom
         public int koniecY { get; private set; }//
         public int numerMapy;//okresla ktora mape wczytac
-        public string[] tekstyPustePole = new string[] { "a", "b", "c" }; //zbior tekstow, ktore moga wyswietlic sie gdy patrzysz na puste pole(zeby nie bylo nudno!)
+        public string[] tekstyPustePole = new string[] { "Nic tu nie ma.", "Nie znajdujesz niczego.", "Widzisz pustą podłogę." }; //zbior tekstow, ktore moga wyswietlic sie gdy patrzysz na puste pole(zeby nie bylo nudno!)
         public Mapa(int wyskosc, int szerokosc,int x, int y)
         {
             wysokoscMapy = wyskosc;
@@ -156,16 +156,16 @@ namespace Gra
                 while ((wczytane = wczytywanie.ReadLine()) != null)
                 {
                     string[] dane = wczytane.Split(';');
-                    if (dane.Count() >= 6)
+                    if (dane.Count() >= 9)
                     {
                         
-                        int id,x,y;
-                        
-                        if (int.TryParse(dane[3], out id) == false|| int.TryParse(dane[4], out x) == false || int.TryParse(dane[5], out y) == false)
+                        int id,x,y,xsciany,ysciany;
+                        bool newitem;
+                        if (int.TryParse(dane[3], out id) == false|| int.TryParse(dane[4], out x) == false || int.TryParse(dane[5], out y) == false || bool.TryParse(dane[6], out newitem) == false || int.TryParse(dane[6], out xsciany) == false || int.TryParse(dane[7], out ysciany) == false)
                             bladWczytywania = true;
                         else
                         {
-                            spisPrzedmiotow.Add(new Przedmiot(dane[0], dane[1], dane[2], id,x,y));
+                            spisPrzedmiotow.Add(new Przedmiot(dane[0], dane[1], dane[2], id, x, y, newitem, xsciany, ysciany));
                             
                            
                         }
@@ -197,8 +197,6 @@ namespace Gra
                             koniecY = 11;
                             Player.x = 0;
                             Player.y = 10;
-                            tekst.Clear();
-                            tekst.Add("Ukukonczyles poziom \n");
                             break;
                         }
                     case 2:
@@ -207,8 +205,6 @@ namespace Gra
                             koniecY = 5;
                             Player.x = 0;
                             Player.y = 5;
-                            tekst.Clear();
-                            tekst.Add("Ukukonczyles poziom \n");
                             break;
                         }
                     case 3:
@@ -217,8 +213,6 @@ namespace Gra
                             koniecY = 13;
                             Player.x = 26;
                             Player.y = 0;
-                            tekst.Clear();
-                            tekst.Add("Ukukonczyles poziom \n");
                             break;
                         }
                     case 4:
@@ -227,8 +221,6 @@ namespace Gra
                             koniecY = 13;
                             Player.x = 0;
                             Player.y = 4;
-                            tekst.Clear();
-                            tekst.Add("Ukukonczyles poziom \n");
                             break;
                         }
                     default:

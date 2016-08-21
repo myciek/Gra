@@ -21,12 +21,7 @@ namespace Gra
     public partial class MainWindow : Window
     {
         Gracz Player = new Gracz(3, 1,0);
-        Mapa mapa = new Mapa(31, 27,17,9);
-        
-
-        
-       
-        
+        Mapa mapa = new Mapa(31, 27,17,9); 
         public MainWindow()
         {
             
@@ -40,8 +35,7 @@ namespace Gra
             LookButton.IsEnabled = false;
             UseButton.IsEnabled = false;
             TakeButton.IsEnabled = false;
-        }
-        
+        }        
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -209,19 +203,39 @@ namespace Gra
             int polex = Player.x;
             int poley = Player.y;
             Pole pole = mapa.mapa[polex, poley];
-            if (pole.rodzaj == Pole.Rodzaj.Puste)
+            if (listBox.SelectedItem == null)
             {
-                
-                mapa.tekst.Add(mapa.LosowyTekst()+"\n");
-                mapa.WypisywanieTesktu();
-                textBox.Text = mapa.wypisywanie;
-            }
-            else if (pole.rodzaj == Pole.Rodzaj.Przedmiot)
+                if (pole.rodzaj == Pole.Rodzaj.Puste)
                 {
-                mapa.OgladaniePrzedmiotu(Player, ref mapa.mapa[Player.x, Player.y]);
+
+                    mapa.tekst.Add(mapa.LosowyTekst() + "\n");
+                    mapa.WypisywanieTesktu();
+                    textBox.Text = mapa.wypisywanie;
+                }
+                else if (pole.idPrzedmiotu != 0)
+                {
+                    mapa.OgladaniePrzedmiotu(Player, ref mapa.mapa[Player.x, Player.y]);
+                    mapa.WypisywanieTesktu();
+                    textBox.Text = mapa.wypisywanie;
+                    listBox.SelectedItem = null;
+                }
+            }
+            else
+            {
+                string nazwa = listBox.SelectedItem.ToString();
+                Przedmiot wybranyPrzedmiot = new Przedmiot("Test", "Srest", "Tetest", 0, 0, 0, false, 0, 0);
+
+                foreach (Przedmiot przedmiot in Player.ekwipunek)
+                {
+                    if (przedmiot.nazwa == nazwa)
+                        wybranyPrzedmiot = przedmiot;
+                }
+                mapa.tekst.Add(wybranyPrzedmiot.opis + "\n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
+                listBox.SelectedItem = null;
             }
+
 
         }
 
@@ -309,28 +323,47 @@ namespace Gra
             }
             else {
                 string nazwa = listBox.SelectedItem.ToString();
-                Przedmiot wybranyPrzedmiot= new Przedmiot("Test","a","b",3,0,0);
+                Przedmiot wybranyPrzedmiot= new Przedmiot("Test","a","b",3,0,0,false, 0, 0);
+                int i = 0;
+                int nrprzedmiotu = 0;
                 foreach (Przedmiot przedmiot in Player.ekwipunek)
                 {
+                    i++;
                     if (nazwa == przedmiot.nazwa)
                     {
                          wybranyPrzedmiot = przedmiot;
+                         nrprzedmiotu = i;
                     }
 
                 }
                 if(wybranyPrzedmiot.x==Player.x && wybranyPrzedmiot.y==Player.y)
                 {
+                    if(wybranyPrzedmiot.newitem == true)
+                    {
+
+                        Player.ekwipunek.Remove(Player.ekwipunek[nrprzedmiotu]);
+                        listBox.Items.Remove(wybranyPrzedmiot.nazwa);
+                    //    Player.ekwipunek.Add(spisPrzedmiotow[wybranyPrzedmiot.id+1]);
+                    //    listBox.Items.Add(nowyPrzedmiot.nazwa);
+                    //    mapa.tekst.Add("Uzyskales " + nowyPrzedmiot.nazwa + " /n"; // teksy sobie zmien
+                    //    mapa.WypisywanieTesktu();
+                    //    textBox.Text = mapa.wypisywanie;
+                    }
+                    else
                     mapa.tekst.Add("Cos sie dzieje? \n");
+                    mapa.mapa[wybranyPrzedmiot.xsciany, wybranyPrzedmiot.ysciany].rodzaj = Pole.Rodzaj.Puste;
                     mapa.WypisywanieTesktu();
                     textBox.Text = mapa.wypisywanie;
                 }
+
                 else
                 {
                     mapa.tekst.Add("Sprobowales uzyc " + wybranyPrzedmiot.nazwa+ " ale nic sie nie stalo. \n");
                     mapa.WypisywanieTesktu();
                     textBox.Text = mapa.wypisywanie;
                 }
-        }
+                listBox.SelectedItem = null;
+            }
         }
     }
 }

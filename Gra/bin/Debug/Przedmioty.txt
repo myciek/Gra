@@ -1,1 +1,4 @@
-Zloty Klucz;Zloty klucz, wydaje siê pasowac do jakichs drzwi.;polyskujacy na ciemnej posadzce zloty przedmiot.;1;4;1
+Zloty Klucz;Zloty klucz, wydaje sie pasowac do jakichs drzwi.;polyskujacy na ciemnej posadzce zloty przedmiot.;1;15;9;false;16;9
+Pochodnia; Plonaca pochodnia; niezbyt solidnie przymocowana do sciany pochodnie;2;22;5;false;22;1
+Zlamana Pochodnia; Zlamana, plonaca pochodnia, wypadla z uchwytu na sciane; lezaca na ziemi pochodnia;3;25;12;false;24;12
+Klucz; Klucze maja to do siebie, ze otwieraja drzwi; lezacy na posadzce klucz;4;10;24;false;10;24

@@ -30,23 +30,23 @@ namespace Gra
 
         public void Polnoc(Pole pole, Gracz gracz)
         {
-            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot)
+            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
                 gracz.y--;
         }
 
         public void Poludnie(Pole pole, Gracz gracz)
         {
-            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot)
+            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
                 gracz.y++;
         }
         public void Wschod(Pole pole, Gracz gracz)
         {
-            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot)
+            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
                 gracz.x++;
         }
         public void Zachod(Pole pole, Gracz gracz)
         {
-            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot)
+            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
                 gracz.x--;
         }
 

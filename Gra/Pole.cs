@@ -28,7 +28,6 @@ namespace Gra
             if (ID == 0)
             {
                 rodzaj = Rodzaj.Sciana;
-                
             }
             else
             idPrzedmiotu = ID;
