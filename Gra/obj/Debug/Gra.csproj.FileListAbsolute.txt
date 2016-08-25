@@ -71,3 +71,17 @@ J:\.Net Projekt\Gra\obj\Debug\MainWindow.baml
 J:\.Net Projekt\Gra\obj\Debug\Gra.g.resources
 J:\.Net Projekt\Gra\obj\Debug\Gra.Properties.Resources.resources
 J:\.Net Projekt\Gra\obj\Debug\Gra.csproj.GenerateResource.Cache
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\bin\Debug\Gra.exe.config
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\obj\Debug\Gra.exe
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\obj\Debug\Gra.pdb
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\bin\Debug\Gra.exe
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\bin\Debug\Gra.pdb
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\obj\Debug\Gra.csprojResolveAssemblyReference.cache
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\obj\Debug\MainWindow.g.cs
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\obj\Debug\App.g.cs
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\obj\Debug\Gra_MarkupCompile.cache
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\obj\Debug\Gra_MarkupCompile.lref
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\obj\Debug\MainWindow.baml
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\obj\Debug\Gra.g.resources
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\obj\Debug\Gra.Properties.Resources.resources
+C:\Users\Mariusz\Desktop\Junior.-NET-master\Gra\obj\Debug\Gra.csproj.GenerateResource.Cache

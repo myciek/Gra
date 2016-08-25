@@ -68,7 +68,7 @@ namespace Gra
             if (File.Exists("Gracz.txt") == true)
             {
                 FileStream plik = new FileStream("Gracz.txt", FileMode.Open, FileAccess.Read);
-                mapa.bladWczytywania = false;
+                
                 StreamReader wczytywanie = new StreamReader(plik);
                 string wczytane = wczytywanie.ReadLine();
                 string[] dane = wczytane.Split(',');

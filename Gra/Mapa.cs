@@ -19,6 +19,7 @@ namespace Gra
         public int koniecX { get; private set; }//wspolrzedne do ktorych gracz musi sie dostac, zeby dostac sie na kolejny poziom
         public int koniecY { get; private set; }//
         public int numerMapy;//okresla ktora mape wczytac
+        public bool wczytywanie=false;//okresla czy gra zostala wczytana
         public string[] tekstyPustePole = new string[] { "Nic tu nie ma.", "Nie znajdujesz niczego.", "Widzisz pustą podłogę." }; //zbior tekstow, ktore moga wyswietlic sie gdy patrzysz na puste pole(zeby nie bylo nudno!)
         public Mapa(int wyskosc, int szerokosc,int x, int y)
         {
@@ -78,7 +79,7 @@ namespace Gra
                 if (File.Exists("Mapa" + numerMapy + ".txt") == true)
                 {
                     FileStream plik = new FileStream("Mapa" + numerMapy + ".txt", FileMode.Open, FileAccess.Read);
-                    bladWczytywania = false;
+                    
                     StreamReader wczytywanie = new StreamReader(plik);
                     mapa = new Pole[wysokoscMapy, szerokoscMapy];
                     string wczytane;
@@ -161,7 +162,7 @@ namespace Gra
                         
                         int id,x,y,xsciany,ysciany;
                         bool newitem;
-                        if (int.TryParse(dane[3], out id) == false|| int.TryParse(dane[4], out x) == false || int.TryParse(dane[5], out y) == false || bool.TryParse(dane[6], out newitem) == false || int.TryParse(dane[6], out xsciany) == false || int.TryParse(dane[7], out ysciany) == false)
+                        if (int.TryParse(dane[3], out id) == false|| int.TryParse(dane[4], out x) == false || int.TryParse(dane[5], out y) == false || bool.TryParse(dane[6], out newitem) == false || int.TryParse(dane[7], out xsciany) == false || int.TryParse(dane[8], out ysciany) == false)
                             bladWczytywania = true;
                         else
                         {

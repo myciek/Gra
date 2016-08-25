@@ -1,4 +1,12 @@
-Zloty Klucz;Zloty klucz, wydaje sie pasowac do jakichs drzwi.;polyskujacy na ciemnej posadzce zloty przedmiot.;1;15;9;false;16;9
-Pochodnia; Plonaca pochodnia; niezbyt solidnie przymocowana do sciany pochodnie;2;22;5;false;22;1
-Zlamana Pochodnia; Zlamana, plonaca pochodnia, wypadla z uchwytu na sciane; lezaca na ziemi pochodnia;3;25;12;false;24;12
-Klucz; Klucze maja to do siebie, ze otwieraja drzwi; lezacy na posadzce klucz;4;10;24;false;10;24
+Zloty Klucz;Zloty klucz, wydaje sie pasowac do jakichs drzwi.;polyskujacy na ciemnej posadzce zloty przedmiot.;1;15;9;false;15;9
+Pochodnia;Plonaca pochodnia; niezbyt solidnie przymocowana do sciany pochodnia;2;22;5;false;22;1
+Zlamana Pochodnia;Zlamana, plonaca pochodnia, wypadla z uchwytu na sciane; lezaca na ziemi pochodnia;3;25;12;false;24;12
+Klucz;Klucze maja to do siebie, ze otwieraja drzwi; lezacy na posadzce klucz;4;10;24;false;10;24
+Rekawice;Solidne, skorzane rekawice. Wygladaja jakby mogly wytrzymac wysokie temperatury.; szkielet lezacy w kacie korytarza. Jego ubranie jest w strzepach, jedynie jego rekawice wydaja sie byc cale.;5;8;1;true;0;0
+Ognisty Grzyb;Grzyb wielkosci dorodnego borowika, bardzo goracy. Slynie z wlasciwosci alchemicznych.; grupke grzybow porastajacych podloge lochu. Wsrod nich jeden szczegolnie sie wyroznia lekko oswietlajac mrok pomaranczowa poswiata;6;30;13;true;30;26
+Butelka;Pusta, szklana butelka. Bez zawartosci wydaje sie raczej nieprzydatna.; pusta, szklana butelke lezaca na drewnianej poleczce.;7;9;18;true;30;25
+Butelka z woda;Szklana butelka wypelniona woda.; le¿¹ca na ziemi butelka wody.;8;29;25;false;29;25
+Swiecacy Mech;Kepka swiecacego w ciemnosci, jasnoniebieskiego mchu.; porastajacy komnate dziwny, swiecacy mech;9;30;13;true;28;25
+Butelka z wod¹ i mchem; Wyglada na to, ze mech rozpuscil sie w wodzie tworzac metna zawiesine, ale nie wyglada to na  
+Mikstura;Plyn, ktory po skapnieciu na podloge wypalil w niej mala dziure, pewnie moze rozpuscic nie jedna przeszkode.; zakorkowana butelke z bulgoczacym plynem w srodku.;10;25;5;false;26;5
+Ksiega;Potezne tomisko, w polowie spalone, a w drugiej nieczytelne. Jedyna receptura, ktora dala sie odczytac dotyczy mikstury rozpuszczajacej. Do butelki z woda nalezy dodac ognistego muchomora i swietlistego paweznika. W tej kolejnosci;11;1;1;false;2;2

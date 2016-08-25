@@ -212,7 +212,7 @@ namespace Gra
                     mapa.WypisywanieTesktu();
                     textBox.Text = mapa.wypisywanie;
                 }
-                else if (pole.idPrzedmiotu != 0)
+                else if (mapa.mapa[Player.x, Player.y].rodzaj == Pole.Rodzaj.Przedmiot)
                 {
                     mapa.OgladaniePrzedmiotu(Player, ref mapa.mapa[Player.x, Player.y]);
                     mapa.WypisywanieTesktu();
@@ -253,43 +253,50 @@ namespace Gra
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            mapa.WczytywaniePrzedmiotow();
-            Player.Wczytaj(ref mapa);
-            foreach(Przedmiot przedmiot in Player.ekwipunek)
+            if (mapa.wczytywanie == false)
             {
-                listBox.Items.Add(przedmiot.nazwa);
-            }
-            mapa.WczytywanieMapy(Player);
-            
-            if (Player.koniecGry == true)
-            {
-                textBox.Text = "GRATULACJE UKONCZYLES GRE!!! \n";
-                NButtton.IsEnabled = true;
-                SButton.IsEnabled = true;
-                EButton.IsEnabled = true;
-                WButton.IsEnabled = true;
-            }
-
-            else
-            {
-                if (mapa.bladWczytywania == false)
+                mapa.WczytywaniePrzedmiotow();
+                Player.Wczytaj(ref mapa);
+                foreach (Przedmiot przedmiot in Player.ekwipunek)
                 {
-                    textBox.Text = "Wczytano Poziom " + Player.poziom + ".";
+                    listBox.Items.Add(przedmiot.nazwa);
+                }
+                mapa.WczytywanieMapy(Player);
+
+                if (Player.koniecGry == true)
+                {
+                    textBox.Text = "GRATULACJE UKONCZYLES GRE!!! \n";
                     NButtton.IsEnabled = true;
                     SButton.IsEnabled = true;
                     EButton.IsEnabled = true;
                     WButton.IsEnabled = true;
-                    SaveButton.IsEnabled = true;
-                    LookButton.IsEnabled = true;
-                    UseButton.IsEnabled = true;
-                    TakeButton.IsEnabled = true;
                 }
-                else
-                    textBox.Text = "Blad wczytywania! Czyzbys grzebal w plikach?";
 
+                else
+                {
+                    if (mapa.bladWczytywania == false)
+                    {
+                        textBox.Text = "Wczytano Poziom " + Player.poziom + ".";
+                        NButtton.IsEnabled = true;
+                        SButton.IsEnabled = true;
+                        EButton.IsEnabled = true;
+                        WButton.IsEnabled = true;
+                        SaveButton.IsEnabled = true;
+                        LookButton.IsEnabled = true;
+                        UseButton.IsEnabled = true;
+                        TakeButton.IsEnabled = true;
+                        mapa.wczytywanie = true;
+                    }
+                    else
+                        textBox.Text = "Blad wczytywania! Czyzbys grzebal w plikach?";
+
+                }
+            }
+            else
+            {
+                textBox.Text = "Juz wczytano. Jesli chcesz wczytac wczesniejsze postepy uruchom gre ponownie. \n";
             }
         }
-
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -333,6 +340,8 @@ namespace Gra
                     {
                          wybranyPrzedmiot = przedmiot;
                          nrprzedmiotu = i;
+                        wybranyPrzedmiot.xsciany = przedmiot.xsciany;
+                        wybranyPrzedmiot.ysciany = przedmiot.ysciany;
                     }
 
                 }
