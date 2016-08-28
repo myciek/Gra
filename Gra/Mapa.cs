@@ -12,25 +12,24 @@ namespace Gra
         public int wysokoscMapy { get; private set; }//okreslaja wymiary mapy
         public int szerokoscMapy { get; private set; }//
         public Pole[,] mapa;
-        public bool bladWczytywania; //sluzy do poindormowania uzykownika, ze dane ktore chce wczytac sa bledne
+        public bool bladWczytywania; //sluzy do poinformowania uzykownika, ze dane ktore chce wczytac sa bledne
         public List<string> tekst = new List<string>();//przechowuje dane ktore maja byc wyswietlane uzytkownikowi
         public string wypisywanie;//jest to tekst ktory uzywtkownik widzi na ekranie
         public List<Przedmiot> spisPrzedmiotow ;//przechowuje wszystkie przedmioty
+        public List<Drzwi> spisDrzwi;//przechowuje drzwi
         public int koniecX { get; private set; }//wspolrzedne do ktorych gracz musi sie dostac, zeby dostac sie na kolejny poziom
         public int koniecY { get; private set; }//
         public int numerMapy;//okresla ktora mape wczytac
         public bool wczytywanie=false;//okresla czy gra zostala wczytana
+        public int nrZapisu;//okresla z ktorego pliku wczytywac/zapisywac gre
         public string[] tekstyPustePole = new string[] { "Nic tu nie ma.", "Nie znajdujesz niczego.", "Widzisz pustą podłogę." }; //zbior tekstow, ktore moga wyswietlic sie gdy patrzysz na puste pole(zeby nie bylo nudno!)
+        public string[] tekstyPolePrzedmiot = new string[] { "Wydaje ci sie, ze dostrzegasz cos w ciemnosci.", "Pomimo wszechobecnego mroku udalo ci sie cos znalezc.", "Po omacku dotarles do jakiegos przedmiotu." };//zbiór tekstów które wyświetlają się po wejściu na pole z przedmiotem
         public Mapa(int wyskosc, int szerokosc,int x, int y)
         {
             wysokoscMapy = wyskosc;
             szerokoscMapy = szerokosc;
             koniecX = x;
-            koniecY = y;
-            
-
-
-
+            koniecY = y;          
         }
         public void TworzenieMapy()//tworzy nowa mape o podanych wymiarach
         {
@@ -40,14 +39,12 @@ namespace Gra
                 for (int j = 0; j < szerokoscMapy; j++)
                 {
                     mapa[i, j] = new Pole(i, j, 0);
-                }
-
-
+                }                
             }
         }
         public void ZapisMapy()//zapis mapy do pliku
         {
-            FileStream plik = new FileStream("Mapa" + numerMapy + ".txt", FileMode.OpenOrCreate, FileAccess.Write);
+            FileStream plik = new FileStream("Mapa" + numerMapy + "Save" + nrZapisu + ".txt", FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter zapis = new StreamWriter(plik);
             for (int i = 0; i < wysokoscMapy; i++)
             {
@@ -57,13 +54,9 @@ namespace Gra
                         zapis.WriteLine(mapa[i, j].x + " " + mapa[i, j].y + " " + mapa[i, j].rodzaj + " " + mapa[i, j].idPrzedmiotu);
                     else
                         zapis.WriteLine(mapa[i, j].x + " " + mapa[i, j].y + " " + mapa[i, j].rodzaj + " 0");
-
                 }
-
             }
-
             zapis.Close();
-
         }
 
         public void WczytywanieMapy(Gracz Player)//wczytuje mape z pliku
@@ -76,9 +69,15 @@ namespace Gra
             else
             numerMapy = Player.poziom;
             {
-                if (File.Exists("Mapa" + numerMapy + ".txt") == true)
+                FileStream plik;
+                if (File.Exists("Mapa" + numerMapy + "Save" + nrZapisu + ".txt") == true)
                 {
-                    FileStream plik = new FileStream("Mapa" + numerMapy + ".txt", FileMode.Open, FileAccess.Read);
+                     plik = new FileStream("Mapa" + numerMapy + "Save" + nrZapisu + ".txt", FileMode.Open, FileAccess.Read);
+                }
+                else
+                {
+                     plik = new FileStream("Mapa" + numerMapy + ".txt", FileMode.Open, FileAccess.Read);
+                }
                     
                     StreamReader wczytywanie = new StreamReader(plik);
                     mapa = new Pole[wysokoscMapy, szerokoscMapy];
@@ -123,15 +122,9 @@ namespace Gra
                             }
                         }
                     }
-
+                    tekst.Add("Wczytano Poziom " + Player.poziom + ". \n");
                     wczytywanie.Close();
-                }
-                else
-                    bladWczytywania = true;
-
-
-
-            }
+              }
         }
         public void WypisywanieTesktu()//dzieki tej metodzie informacje na ekranie "przesuwaja sie" gdy jest ich wiecej
         {
@@ -157,7 +150,7 @@ namespace Gra
                 while ((wczytane = wczytywanie.ReadLine()) != null)
                 {
                     string[] dane = wczytane.Split(';');
-                    if (dane.Count() >= 9)
+                    if (dane.Count() >= 10)
                     {
                         
                         int id,x,y,xsciany,ysciany;
@@ -166,16 +159,37 @@ namespace Gra
                             bladWczytywania = true;
                         else
                         {
-                            spisPrzedmiotow.Add(new Przedmiot(dane[0], dane[1], dane[2], id, x, y, newitem, xsciany, ysciany));
-                            
-                           
+                            spisPrzedmiotow.Add(new Przedmiot(dane[0], dane[1], dane[2], id, x, y, newitem, xsciany, ysciany, dane[9]));                           
                         }
                     }
                 }
-
-
             }
+        }
+        public void WczytywanieDrzwi()//wczytuje opisy drzwi
+        {
+            if (File.Exists("Drzwi.txt") == true)
+            {
+                FileStream plik = new FileStream("Drzwi.txt", FileMode.Open, FileAccess.Read);
+                bladWczytywania = false;
+                StreamReader wczytywanie = new StreamReader(plik);
+                string wczytane;
+                spisDrzwi = new List<Drzwi>();
 
+                while ((wczytane = wczytywanie.ReadLine()) != null)
+                {
+                    string[] dane = wczytane.Split(';');
+                    if (dane.Count() >= 2)
+                    {
+                        int id;
+                        if (int.TryParse(dane[1], out id) == false)
+                        bladWczytywania = true;
+                        else
+                        {
+                            spisDrzwi.Add(new Drzwi(dane[0], id));
+                        }
+                    }
+                }
+            }
         }
 
         public void KonczeniePoziomu(ref Gracz Player)
@@ -240,6 +254,12 @@ namespace Gra
             return tekstyPustePole[random.Next(0, tekstyPustePole.Length)];
         }
 
+        public string TekstPrzedmiot()
+        {
+            Random random = new Random();
+            return tekstyPolePrzedmiot[random.Next(0, tekstyPustePole.Length)];
+        }
+
         public void PodnoszeniePrzedmiotu(Gracz Player, ref Pole pole)
         {
             
@@ -253,6 +273,11 @@ namespace Gra
         public void OgladaniePrzedmiotu (Gracz Player, ref Pole pole)
         {
             tekst.Add("Widzisz " + spisPrzedmiotow[pole.idPrzedmiotu - 1].opisziemia + ". \n");
+        }
+
+        public void OgladanieDrzwi(Gracz Player, ref Pole pole)
+        {
+            tekst.Add("Widzisz " + spisDrzwi[pole.idPrzedmiotu-1].opis + ". \n");
         }
     }
 }

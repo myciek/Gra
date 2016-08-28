@@ -18,7 +18,8 @@ namespace Gra
             Puste,
             Sciana,
             Przedmiot,
-            Drzwi
+            Drzwi,
+            Przelacznik
         };//okresla co znajduje sie na polu
         public Rodzaj rodzaj;
         public Pole(int X, int Y, int ID)

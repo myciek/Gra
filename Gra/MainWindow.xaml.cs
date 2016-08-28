@@ -20,13 +20,19 @@ namespace Gra
     /// </summary>
     public partial class MainWindow : Window
     {
-        Gracz Player = new Gracz(3, 1,0);
+        Gracz Player = new Gracz(3,1,0);
         Mapa mapa = new Mapa(31, 27,17,9); 
         public MainWindow()
         {
             
             InitializeComponent();
-            textBox.Text = "Witaj, wczytaj mape za pomocą Load";
+            textBox.Text = "Witaj,wybierz slot i wczytaj gre za pomocą Load (jesli nie zapisywales wczesniej gry na slocie, ktory wybrales, rozpoczniesz nowa gre).";
+            listBox.Items.Add("Save1");
+            listBox.Items.Add("Save2");
+            listBox.Items.Add("Save3");
+            listBox.Items.Add("Save4");
+            listBox.Items.Add("Save5");
+            
             NButtton.IsEnabled = false;
             SButton.IsEnabled = false;
             EButton.IsEnabled = false;
@@ -44,7 +50,7 @@ namespace Gra
 
         private void EButton_Click(object sender, RoutedEventArgs e)
         {
-            mapa.KonczeniePoziomu(ref Player);
+            
             if (Player.koniecGry == false)
             {
                 if (Player.x < (mapa.szerokoscMapy - 1))
@@ -56,6 +62,12 @@ namespace Gra
                     if (pole.rodzaj == Pole.Rodzaj.Sciana)
                     {
                         mapa.tekst.Add("Napotykasz ścianę \n");
+                        mapa.WypisywanieTesktu();
+                        textBox.Text = mapa.wypisywanie;
+                    }
+                    else if (pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
+                    {
+                        mapa.tekst.Add(mapa.TekstPrzedmiot() + "\n");
                         mapa.WypisywanieTesktu();
                         textBox.Text = mapa.wypisywanie;
                     }
@@ -79,11 +91,14 @@ namespace Gra
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
+            mapa.KonczeniePoziomu(ref Player);
+            mapa.WypisywanieTesktu();
+            textBox.Text = mapa.wypisywanie;
         }
 
         private void WButton_Click(object sender, RoutedEventArgs e)
         {
-            mapa.KonczeniePoziomu(ref Player);
+            
             if (Player.koniecGry == false)
             {
                 if (Player.x > 0)
@@ -95,6 +110,12 @@ namespace Gra
                     if (pole.rodzaj == Pole.Rodzaj.Sciana)
                     {
                         mapa.tekst.Add("Napotykasz ścianę \n");
+                        mapa.WypisywanieTesktu();
+                        textBox.Text = mapa.wypisywanie;
+                    }
+                    else if (pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
+                    {
+                        mapa.tekst.Add(mapa.TekstPrzedmiot() + "\n");
                         mapa.WypisywanieTesktu();
                         textBox.Text = mapa.wypisywanie;
                     }
@@ -118,11 +139,14 @@ namespace Gra
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
+            mapa.KonczeniePoziomu(ref Player);
+            mapa.WypisywanieTesktu();
+            textBox.Text = mapa.wypisywanie;
         }
 
         private void SButton_Click(object sender, RoutedEventArgs e)
         {
-            mapa.KonczeniePoziomu(ref Player);
+            
             if (Player.koniecGry == false)
             {
                 if (Player.y < (mapa.wysokoscMapy - 1))
@@ -134,6 +158,12 @@ namespace Gra
                     if (pole.rodzaj == Pole.Rodzaj.Sciana)
                     {
                         mapa.tekst.Add("Napotykasz ścianę \n");
+                        mapa.WypisywanieTesktu();
+                        textBox.Text = mapa.wypisywanie;
+                    }
+                    else if (pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
+                    {
+                        mapa.tekst.Add(mapa.TekstPrzedmiot() + "\n");
                         mapa.WypisywanieTesktu();
                         textBox.Text = mapa.wypisywanie;
                     }
@@ -157,11 +187,15 @@ namespace Gra
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
+            mapa.KonczeniePoziomu(ref Player);
+            mapa.WypisywanieTesktu();
+            textBox.Text = mapa.wypisywanie;
+            
         }
 
         private void NButtton_Click(object sender, RoutedEventArgs e)
         {
-            mapa.KonczeniePoziomu(ref Player);
+            
             if (Player.koniecGry == false)
             {
                 if (Player.y > 0)
@@ -173,6 +207,12 @@ namespace Gra
                     if (pole.rodzaj == Pole.Rodzaj.Sciana)
                     {
                         mapa.tekst.Add("Napotykasz ścianę \n");
+                        mapa.WypisywanieTesktu();
+                        textBox.Text = mapa.wypisywanie;
+                    }
+                    else if (pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
+                    {
+                        mapa.tekst.Add(mapa.TekstPrzedmiot() + "\n");
                         mapa.WypisywanieTesktu();
                         textBox.Text = mapa.wypisywanie;
                     }
@@ -196,6 +236,9 @@ namespace Gra
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
+            mapa.KonczeniePoziomu(ref Player);
+            mapa.WypisywanieTesktu();
+            textBox.Text = mapa.wypisywanie;
         }
 
         private void LookButton_Click(object sender, RoutedEventArgs e)
@@ -219,11 +262,17 @@ namespace Gra
                     textBox.Text = mapa.wypisywanie;
                     listBox.SelectedItem = null;
                 }
+                else if (mapa.mapa[Player.x, Player.y].rodzaj == Pole.Rodzaj.Drzwi)
+                {
+                    mapa.OgladanieDrzwi(Player, ref mapa.mapa[Player.x, Player.y]);
+                    mapa.WypisywanieTesktu();
+                    textBox.Text = mapa.wypisywanie;
+                }
             }
             else
             {
                 string nazwa = listBox.SelectedItem.ToString();
-                Przedmiot wybranyPrzedmiot = new Przedmiot("Test", "Srest", "Tetest", 0, 0, 0, false, 0, 0);
+                Przedmiot wybranyPrzedmiot = new Przedmiot("Test", "Srest", "Tetest", 0, 0, 0, false, 0, 0, "trata");
 
                 foreach (Przedmiot przedmiot in Player.ekwipunek)
                 {
@@ -247,7 +296,7 @@ namespace Gra
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             mapa.ZapisMapy();
-            Player.Zapis();
+            Player.Zapis(mapa);
 
         }
 
@@ -255,41 +304,62 @@ namespace Gra
         {
             if (mapa.wczytywanie == false)
             {
-                mapa.WczytywaniePrzedmiotow();
-                Player.Wczytaj(ref mapa);
-                foreach (Przedmiot przedmiot in Player.ekwipunek)
+                if (listBox.SelectedItem != null)
                 {
-                    listBox.Items.Add(przedmiot.nazwa);
-                }
-                mapa.WczytywanieMapy(Player);
-
-                if (Player.koniecGry == true)
-                {
-                    textBox.Text = "GRATULACJE UKONCZYLES GRE!!! \n";
-                    NButtton.IsEnabled = true;
-                    SButton.IsEnabled = true;
-                    EButton.IsEnabled = true;
-                    WButton.IsEnabled = true;
-                }
-
-                else
-                {
-                    if (mapa.bladWczytywania == false)
+                    if (listBox.SelectedItem.ToString() == "Save1")
+                        mapa.nrZapisu = 1;
+                    else
+                        if (listBox.SelectedItem.ToString() == "Save2")
+                            mapa.nrZapisu = 2;
+                        else
+                            if (listBox.SelectedItem.ToString() == "Save3")
+                                mapa.nrZapisu = 3;
+                            else
+                                if (listBox.SelectedItem.ToString() == "Save4")
+                                    mapa.nrZapisu = 4;
+                                else
+                                    mapa.nrZapisu = 5;
+                    listBox.Items.Clear();                                   
+                    mapa.WczytywaniePrzedmiotow();
+                    Player.Wczytaj(ref mapa);
+                    foreach (Przedmiot przedmiot in Player.ekwipunek)
                     {
-                        textBox.Text = "Wczytano Poziom " + Player.poziom + ".";
+                        listBox.Items.Add(przedmiot.nazwa);
+                    }
+                    mapa.WczytywanieMapy(Player);
+
+                    if (Player.koniecGry == true)
+                    {
+                        textBox.Text = "GRATULACJE UKONCZYLES GRE!!! \n";
                         NButtton.IsEnabled = true;
                         SButton.IsEnabled = true;
                         EButton.IsEnabled = true;
                         WButton.IsEnabled = true;
-                        SaveButton.IsEnabled = true;
-                        LookButton.IsEnabled = true;
-                        UseButton.IsEnabled = true;
-                        TakeButton.IsEnabled = true;
-                        mapa.wczytywanie = true;
                     }
-                    else
-                        textBox.Text = "Blad wczytywania! Czyzbys grzebal w plikach?";
 
+                    else
+                    {
+                        if (mapa.bladWczytywania == false)
+                        {
+                            textBox.Text = "Wczytano Poziom " + Player.poziom + ".";
+                            NButtton.IsEnabled = true;
+                            SButton.IsEnabled = true;
+                            EButton.IsEnabled = true;
+                            WButton.IsEnabled = true;
+                            SaveButton.IsEnabled = true;
+                            LookButton.IsEnabled = true;
+                            UseButton.IsEnabled = true;
+                            TakeButton.IsEnabled = true;
+                            mapa.wczytywanie = true;
+                        }
+                        else
+                            textBox.Text = "Blad wczytywania! Czyzbys grzebal w plikach?";
+
+                    }
+                }
+                else
+                {
+                    textBox.Text = "Wybierz slot!";
                 }
             }
             else
@@ -330,7 +400,7 @@ namespace Gra
             }
             else {
                 string nazwa = listBox.SelectedItem.ToString();
-                Przedmiot wybranyPrzedmiot= new Przedmiot("Test","a","b",3,0,0,false, 0, 0);
+                Przedmiot wybranyPrzedmiot= new Przedmiot("Test","a","b",3,0,0,false, 0, 0, "tratata");
                 int i = 0;
                 int nrprzedmiotu = 0;
                 foreach (Przedmiot przedmiot in Player.ekwipunek)
@@ -352,14 +422,15 @@ namespace Gra
 
                         Player.ekwipunek.Remove(Player.ekwipunek[nrprzedmiotu]);
                         listBox.Items.Remove(wybranyPrzedmiot.nazwa);
-                    //    Player.ekwipunek.Add(spisPrzedmiotow[wybranyPrzedmiot.id+1]);
-                    //    listBox.Items.Add(nowyPrzedmiot.nazwa);
-                    //    mapa.tekst.Add("Uzyskales " + nowyPrzedmiot.nazwa + " /n"; // teksy sobie zmien
-                    //    mapa.WypisywanieTesktu();
-                    //    textBox.Text = mapa.wypisywanie;
+                        //    Player.ekwipunek.Add(spisPrzedmiotow[wybranyPrzedmiot.id+1]);
+                        //    listBox.Items.Add(nowyPrzedmiot.nazwa);
+                        //    mapa.tekst.Add("Uzyskales " + nowyPrzedmiot.nazwa + " /n";
+                        //    mapa.WypisywanieTesktu();
+                        //    textBox.Text = mapa.wypisywanie;
                     }
                     else
-                    mapa.tekst.Add("Cos sie dzieje? \n");
+                    mapa.tekst.Add(wybranyPrzedmiot.uzycie + "\n");
+                    mapa.mapa[wybranyPrzedmiot.xsciany, wybranyPrzedmiot.ysciany].idPrzedmiotu = 0;
                     mapa.mapa[wybranyPrzedmiot.xsciany, wybranyPrzedmiot.ysciany].rodzaj = Pole.Rodzaj.Puste;
                     mapa.WypisywanieTesktu();
                     textBox.Text = mapa.wypisywanie;

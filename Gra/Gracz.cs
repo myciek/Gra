@@ -30,29 +30,29 @@ namespace Gra
 
         public void Polnoc(Pole pole, Gracz gracz)
         {
-            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
+            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi || pole.rodzaj == Pole.Rodzaj.Przelacznik)
                 gracz.y--;
         }
 
         public void Poludnie(Pole pole, Gracz gracz)
         {
-            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
+            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi || pole.rodzaj == Pole.Rodzaj.Przelacznik)
                 gracz.y++;
         }
         public void Wschod(Pole pole, Gracz gracz)
         {
-            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
+            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi || pole.rodzaj == Pole.Rodzaj.Przelacznik)
                 gracz.x++;
         }
         public void Zachod(Pole pole, Gracz gracz)
         {
-            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
+            if (pole.rodzaj == Pole.Rodzaj.Puste || pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi || pole.rodzaj == Pole.Rodzaj.Przelacznik)
                 gracz.x--;
         }
 
-        public void Zapis()
+        public void Zapis(Mapa mapa)
         {
-            FileStream plik = new FileStream("Gracz.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            FileStream plik = new FileStream("Gracz" + mapa.nrZapisu +".txt", FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter zapis = new StreamWriter(plik);
             zapis.WriteLine(x.ToString() + "," + y.ToString() + "," + poziom.ToString());
             foreach (Przedmiot przedmiot in ekwipunek)
@@ -65,9 +65,15 @@ namespace Gra
 
         public void Wczytaj(ref Mapa mapa)
         {
-            if (File.Exists("Gracz.txt") == true)
+            FileStream plik;
+            if (File.Exists("GraczSave" + mapa.nrZapisu + ".txt") == true)
             {
-                FileStream plik = new FileStream("Gracz.txt", FileMode.Open, FileAccess.Read);
+                 plik = new FileStream("GraczSave" + mapa.nrZapisu + ".txt", FileMode.Open, FileAccess.Read);
+            }
+            else
+            {
+                plik = new FileStream("Gracz.txt", FileMode.Open, FileAccess.Read);
+            }
                 
                 StreamReader wczytywanie = new StreamReader(plik);
                 string wczytane = wczytywanie.ReadLine();
@@ -107,4 +113,4 @@ namespace Gra
 
         }
     }
-}
+

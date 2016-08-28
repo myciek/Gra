@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Gra
 {
-    public class Drzwi : Pole//potrzebny jest klucz, zeby przez nie przejsc
+    public class Drzwi //
     {
-        public int zamek;//potrzebne do sprawdzenia czy klucz pasuje do drzwi
-        public Drzwi(int X, int Y, int Zamek): base(X,Y,Zamek)
+        public string opis;//wyświetla się po obejrzeniu drzwi
+        public int id;
+        public Drzwi(string desc, int Id)
         {
-            zamek = Zamek;
-            rodzaj = Rodzaj.Drzwi;
+            opis = desc;
+            id = Id;           
         }
     }
 }

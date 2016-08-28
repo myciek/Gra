@@ -1,12 +1,23 @@
-Zloty Klucz;Zloty klucz, wydaje sie pasowac do jakichs drzwi.;polyskujacy na ciemnej posadzce zloty przedmiot.;1;15;9;false;15;9
-Pochodnia;Plonaca pochodnia; niezbyt solidnie przymocowana do sciany pochodnia;2;22;5;false;22;1
-Zlamana Pochodnia;Zlamana, plonaca pochodnia, wypadla z uchwytu na sciane; lezaca na ziemi pochodnia;3;25;12;false;24;12
-Klucz;Klucze maja to do siebie, ze otwieraja drzwi; lezacy na posadzce klucz;4;10;24;false;10;24
-Rekawice;Solidne, skorzane rekawice. Wygladaja jakby mogly wytrzymac wysokie temperatury.; szkielet lezacy w kacie korytarza. Jego ubranie jest w strzepach, jedynie jego rekawice wydaja sie byc cale.;5;8;1;true;0;0
-Ognisty Grzyb;Grzyb wielkosci dorodnego borowika, bardzo goracy. Slynie z wlasciwosci alchemicznych.; grupke grzybow porastajacych podloge lochu. Wsrod nich jeden szczegolnie sie wyroznia lekko oswietlajac mrok pomaranczowa poswiata;6;30;13;true;30;26
-Butelka;Pusta, szklana butelka. Bez zawartosci wydaje sie raczej nieprzydatna.; pusta, szklana butelke lezaca na drewnianej poleczce.;7;9;18;true;30;25
-Butelka z woda;Szklana butelka wypelniona woda.; le¿¹ca na ziemi butelka wody.;8;29;25;false;29;25
-Swiecacy Mech;Kepka swiecacego w ciemnosci, jasnoniebieskiego mchu.; porastajacy komnate dziwny, swiecacy mech;9;30;13;true;28;25
-Butelka z wod¹ i mchem; Wyglada na to, ze mech rozpuscil sie w wodzie tworzac metna zawiesine, ale nie wyglada to na  
-Mikstura;Plyn, ktory po skapnieciu na podloge wypalil w niej mala dziure, pewnie moze rozpuscic nie jedna przeszkode.; zakorkowana butelke z bulgoczacym plynem w srodku.;10;25;5;false;26;5
-Ksiega;Potezne tomisko, w polowie spalone, a w drugiej nieczytelne. Jedyna receptura, ktora dala sie odczytac dotyczy mikstury rozpuszczajacej. Do butelki z woda nalezy dodac ognistego muchomora i swietlistego paweznika. W tej kolejnosci;11;1;1;false;2;2
+Zloty Klucz;Zloty klucz, wydaje sie pasowac do jakichs drzwi.;polyskujacy na ciemnej posadzce zloty przedmiot.;1;15;9;false;16;9;Udalo ci sie otworzyc drzwi kluczem.
+Pochodnia;Plonaca pochodnia; niezbyt solidnie przymocowana do sciany pochodnia;2;22;5;false;22;1;Wlozyles pochodnie do pustego uchwytu, uslyszales ze w pomieszczeniu otworzylo sie przejscie.
+Zlamana Pochodnia;Zlamana, plonaca pochodnia, wypadla z uchwytu na sciane; lezaca na ziemi plonaca pochodnia;3;25;12;false;24;12;Podpaliles pajeczyne za pomoca pochodni.
+Srebrny Klucz;Klucze maja to do siebie, ze otwieraja drzwi; lezacy na posadzce klucz;4;10;24;false;10;24;Otworzyles drzwi za pomoca klucza.
+Butelka;Pusta, szklana butelka. Bez zawartosci wydaje sie raczej nieprzydatna.; pusta, szklana butelke lezaca na drewnianej poleczce.;5;9;18;true;30;25;Napelniles butelke woda.
+Butelka z woda;Szklana butelka wypelniona woda.; lezaca na ziemi butelka wody.;6;29;25;false;29;25;Napelniles butelke z woda mchem.
+Swiecacy Mech;Kepka swiecacego w ciemnosci, jasnoniebieskiego mchu.; porastajacy komnate dziwny, swiecacy mech.;7;30;13;true;28;25;Wrzuciles mech do butelki z woda.
+Butelka z wod¹ i mchem; Wyglada na to, ze mech rozpuscil sie w wodzie tworzac metna zawiesine, ale nie wyglada to na kompletny eliksir.; butelke zawierajaca wode zmieszana z mchem.;8;0;1;false;0;2;Dodales grzyba do mikstury.
+Rekawice;Solidne, skorzane rekawice. Wygladaja jakby mogly wytrzymac wysokie temperatury.; szkielet lezacy w kacie korytarza. Jego ubranie jest w strzepach, jedynie jego rekawice wydaja sie byc cale.;9;8;1;true;0;0;Podnosisz grzyb za pomoca rekawic.
+Ognisty Grzyb;Grzyb wielkosci dorodnego borowika, bardzo goracy. Slynie z wlasciwosci alchemicznych.; grupke grzybow porastajacych podloge lochu. Wsrod nich jeden szczegolnie sie wyroznia lekko oswietlajac mrok pomaranczowa poswiata;10;30;13;true;30;26;Dodales grzyba do mikstury.
+Mikstura;Plyn, ktory po skapnieciu na podloge wypalil w niej mala dziure, pewnie moze rozpuscic nie jedna przeszkode.; zakorkowana butelke z bulgoczacym plynem w srodku.;11;25;5;false;26;5;Celnym rzutem mikstura rozpuszczasz stalowe drzwi tworzac przejscie dalej.
+Ksiega;Potezne tomisko, w polowie spalone, a w drugiej nieczytelne. Jedyna receptura, ktora dala sie odczytac dotyczy mikstury rozpuszczajacej. Do butelki z woda nalezy dodac ognistego muchomora i swietlistego paweznika. W tej kolejnosci;12;1;1;false;2;2;Skorzystales z receptury.
+Pierscien;Zdarty ze szkieletu gladki, kamienny pierscien. Wyglada jakby byl czescia jakiejs struktury...; siedzacy na tronie szkielet w krolewskim odzieniu. Zastanawia cie tylko jego bizuteria, skladajaca sie jedynie z dziwnego pierscienia.;13;3;19;false;6;19;Zalozyles pierscien na palec posagu otwierajac przejscie na wschodniej scianie pomieszczenia.
+Zwoj bryly lodu;Magiczny zwoj zawierajacy zaklecie pozwalajace zamrazac rozne obiekty; lezacy na ziemi papierowy zwoj.;14;10;15;false;11;15;Zamroziles zbiornik wody, dzieki czemu mozesz na nim przejsc.
+Mikstura sily;Etykieta na buteleczce glosi, iz jest to napoj gwarantujacy wielka sile przez krotka chwile.; lezacy na stole flakonik z napojem;15;12;7;false;13;7;Wypiles miksture i dzieki swojej zwiekszonej sile udalo ci sie przebic przez oslabiona sciane
+Pusta kartka;To tylko pusta kartka? Musi byc w tym jakis haczyk; kawalek papieru lezacy na ziemi.;16;1;19;true;0;0;Zblizajac kartke do pochodni udalo ci sie dostrzec co na niej napisano.
+Kartka z szyfrem;Na kartce pojawil sie napis 4; kartke, na ktorej niestarannie cos napisano.;17;0;1;false;1;0;Skorzystales z kartki z szyfrem.
+Miecz;Ostre narzedzie uzywane czasem jako bron.; porzucony na ziemi miecz.;18;20;17;false;20;18;Za pomoca miecza wyciales sobie droge przez zarosla.
+Wiadro;Puste, blaszane wiadro.; lezace na ziemi wiadro.;19;5;26;true;0;10;Nabrales wody do wiadra.
+Wiadro z woda;Wiadro wypelnione woda.; lezace na ziemi wiadro wypelnione woda;20;6;21;false;7;21;Ugasiles plomienie z pulapki.
+Szpadel; Narzedzie sluzace do kopania.; oparty o sciane szpadel;21;12;11;false;0;11;Przekopales grob, by dokopac sie do trumny, ktorej nie jestes w stanie otworzyc.
+Lom; Zelazny drag wykorzystywany m. in. do podwazania ciezarow;22;13;11;true;0;12;Udalo ci sie otworzyc wieko trumny, a w srodku zamiast ciala znalazles kolejny klucz.
+Klucz;Zapewne da sie nim otworzyc jakies drzwi; lezacy na ziemi klucz;23;25;13;false;26;13;Otworzyles drzwi.

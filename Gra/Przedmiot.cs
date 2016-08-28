@@ -17,8 +17,9 @@ namespace Gra
         public bool newitem;//określa czy po użyciu przedmiotu dostaje się nowy przedmiot
         public int xsciany;//
         public int ysciany;//współrzędne ściany, która się zmienia w puste po prawidłowym użyciu przedmiotu
+        public string uzycie;//tekst wyswietlany po prawidlowym uzyciu przedmiotu
 
-        public Przedmiot (string name, string desc, string descground, int Id,int X,int Y,bool nowyprzedmiot, int xwall, int ywall)
+        public Przedmiot (string name, string desc, string descground, int Id,int X,int Y,bool nowyprzedmiot, int xwall, int ywall, string use)
         {
             nazwa = name;
             opis = desc;
@@ -26,9 +27,10 @@ namespace Gra
             id = Id;
             x = X;
             y = Y;
-            nowyprzedmiot = newitem;
-            xwall = xsciany;
-            ywall = ysciany;
+            newitem = nowyprzedmiot;
+            xsciany = xwall;
+            ysciany = ywall;
+            uzycie = use;
         }
     }
 }
