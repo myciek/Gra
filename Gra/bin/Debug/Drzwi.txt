@@ -1,2 +1,23 @@
 zamkniete, drewniane drzwi z zamkiem.;1
 uchwyt na scianie, prawdopodobnie na pochodnie.;2
+pajeczyne blokujaca przejscie przez korytarz.;3
+kolejne zamkniete drzwi.;4
+szczeline w suficie, przez ktora skapuje woda.;5
+i tak nie ma drzwi do butelki z woda.;6
+stol alchemiczny. Mozna na nim znalezc palnik, mozdzierz i reszte przydatnego sprzetu laboratoryjnego.;7
+i tak nie ma do tego drzwi;8
+grupke grzybow porastajacych podloge lochu. Wsrod nich jeden szczegolnie sie wyroznia lekko oswietlajac mrok pomaranczowa poswiata;9
+stol alchemiczny. Mozna na nim znalezc palnik, mozdzierz i reszte przydatnego sprzetu laboratoryjnego.;10
+drzwi z jakiegos bardzo twardego metalu, nie wygladaja, jakby dalo je sie otworzyc konwencjonalnymi metodami.;11
+i tak nie ma drzwi do ksiegi lol;12
+pomnik jakiegos moznowladcy. W prawej rece dzierzy miecz, a lewa ma opuszczona, przy czym ta druga jest lekko obdarta na palcu serdecznym.;13
+ciagnacy sie przez korytarz zbiornik wodny. Jako ze nie umiesz plywac i nie wiesz jak gleboki jest, nie ryzykujesz chocby zamoczenia palca.;14
+dziure we wschodniej scianie korytarza. Sciana jest popekana, ale samemu nie uda ci sie jej zniszczyc.;15
+mocno przymocowana pochodnia, raczej nie ma szans n;16
+nie ma drzwi do kartki z szyfrem;17
+przebijajace sie przez sufit kolczaste korzenie jakiejs rosliny. Trzeba sie jakos ich pozbyc.;18
+zwyczajna studnie, w srodku jest nawet woda, ale brakuje wiadra.;19
+ogien, ktory wystrzelil spod posadzki korytarza. To musi byc jakas dawno aktywowana pulapka.;20
+kamienny nagrobek z dawno zatartym napisem. Sadzac po swiezej ziemi, ktos niedawno musial tu cos zakopac.;21
+zaskakujaca lekka trumne, ktorej wieka nie potrafisz otworzyc. Gdyby tylko je czyms podwazyc...;22
+kolejne drzwi z zamkiem. Zza krat na wysokosci glowy do lochu wpadaja sloneczne promienie. Czy to juz wolnosc?;23

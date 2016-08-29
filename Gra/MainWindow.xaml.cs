@@ -59,7 +59,7 @@ namespace Gra
                     int poley = Player.y;
                     Pole pole = mapa.mapa[polex, poley];
                     Player.Wschod(pole, Player);
-                    if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                    if (pole.rodzaj == Pole.Rodzaj.Sciana && mapa.mapa[Player.x, Player.y].rodzaj != Pole.Rodzaj.Drzwi)
                     {
                         mapa.tekst.Add("Napotykasz ścianę \n");
                         mapa.WypisywanieTesktu();
@@ -107,7 +107,7 @@ namespace Gra
                     int poley = Player.y;
                     Pole pole = mapa.mapa[polex, poley];
                     Player.Zachod(pole, Player);
-                    if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                    if (pole.rodzaj == Pole.Rodzaj.Sciana && mapa.mapa[Player.x, Player.y].rodzaj != Pole.Rodzaj.Drzwi)
                     {
                         mapa.tekst.Add("Napotykasz ścianę \n");
                         mapa.WypisywanieTesktu();
@@ -155,7 +155,7 @@ namespace Gra
                     int poley = Player.y + 1;
                     Pole pole = mapa.mapa[polex, poley];
                     Player.Poludnie(pole, Player);
-                    if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                    if (pole.rodzaj == Pole.Rodzaj.Sciana && mapa.mapa[Player.x, Player.y].rodzaj != Pole.Rodzaj.Drzwi)
                     {
                         mapa.tekst.Add("Napotykasz ścianę \n");
                         mapa.WypisywanieTesktu();
@@ -204,7 +204,7 @@ namespace Gra
                     int poley = Player.y - 1;
                     Pole pole = mapa.mapa[polex, poley];
                     Player.Polnoc(pole, Player);
-                    if (pole.rodzaj == Pole.Rodzaj.Sciana)
+                    if (pole.rodzaj == Pole.Rodzaj.Sciana && mapa.mapa[Player.x,Player.y].rodzaj != Pole.Rodzaj.Drzwi)
                     {
                         mapa.tekst.Add("Napotykasz ścianę \n");
                         mapa.WypisywanieTesktu();
@@ -321,6 +321,7 @@ namespace Gra
                                     mapa.nrZapisu = 5;
                     listBox.Items.Clear();                                   
                     mapa.WczytywaniePrzedmiotow();
+                    mapa.WczytywanieDrzwi();
                     Player.Wczytaj(ref mapa);
                     foreach (Przedmiot przedmiot in Player.ekwipunek)
                     {
@@ -425,6 +426,11 @@ namespace Gra
                         //    Player.ekwipunek.Add(spisPrzedmiotow[wybranyPrzedmiot.id+1]);
                         //    listBox.Items.Add(nowyPrzedmiot.nazwa);
                         //    mapa.tekst.Add("Uzyskales " + nowyPrzedmiot.nazwa + " /n";
+                        if (wybranyPrzedmiot.id == 7)
+                        {
+                            mapa.mapa[wybranyPrzedmiot.x, wybranyPrzedmiot.y].rodzaj = Pole.Rodzaj.Drzwi;
+                            mapa.mapa[wybranyPrzedmiot.x, wybranyPrzedmiot.y].idPrzedmiotu = 10;
+                        }
                         //    mapa.WypisywanieTesktu();
                         //    textBox.Text = mapa.wypisywanie;
                     }
@@ -432,6 +438,7 @@ namespace Gra
                     mapa.tekst.Add(wybranyPrzedmiot.uzycie + "\n");
                     mapa.mapa[wybranyPrzedmiot.xsciany, wybranyPrzedmiot.ysciany].idPrzedmiotu = 0;
                     mapa.mapa[wybranyPrzedmiot.xsciany, wybranyPrzedmiot.ysciany].rodzaj = Pole.Rodzaj.Puste;
+                   
                     mapa.WypisywanieTesktu();
                     textBox.Text = mapa.wypisywanie;
                 }

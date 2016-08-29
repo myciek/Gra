@@ -15,7 +15,7 @@ namespace Gra
         public bool bladWczytywania; //sluzy do poinformowania uzykownika, ze dane ktore chce wczytac sa bledne
         public List<string> tekst = new List<string>();//przechowuje dane ktore maja byc wyswietlane uzytkownikowi
         public string wypisywanie;//jest to tekst ktory uzywtkownik widzi na ekranie
-        public List<Przedmiot> spisPrzedmiotow ;//przechowuje wszystkie przedmioty
+        public List<Przedmiot> spisPrzedmiotow;//przechowuje wszystkie przedmioty
         public List<Drzwi> spisDrzwi;//przechowuje drzwi
         public int koniecX { get; private set; }//wspolrzedne do ktorych gracz musi sie dostac, zeby dostac sie na kolejny poziom
         public int koniecY { get; private set; }//
@@ -146,25 +146,28 @@ namespace Gra
                 StreamReader wczytywanie = new StreamReader(plik);
                 string wczytane;
                 spisPrzedmiotow = new List<Przedmiot>();
-                
+
                 while ((wczytane = wczytywanie.ReadLine()) != null)
                 {
                     string[] dane = wczytane.Split(';');
                     if (dane.Count() >= 10)
                     {
-                        
-                        int id,x,y,xsciany,ysciany;
+
+                        int id, x, y, xsciany, ysciany;
                         bool newitem;
-                        if (int.TryParse(dane[3], out id) == false|| int.TryParse(dane[4], out x) == false || int.TryParse(dane[5], out y) == false || bool.TryParse(dane[6], out newitem) == false || int.TryParse(dane[7], out xsciany) == false || int.TryParse(dane[8], out ysciany) == false)
+                        if (int.TryParse(dane[3], out id) == false || int.TryParse(dane[4], out x) == false || int.TryParse(dane[5], out y) == false || bool.TryParse(dane[6], out newitem) == false || int.TryParse(dane[7], out xsciany) == false || int.TryParse(dane[8], out ysciany) == false)
                             bladWczytywania = true;
                         else
                         {
-                            spisPrzedmiotow.Add(new Przedmiot(dane[0], dane[1], dane[2], id, x, y, newitem, xsciany, ysciany, dane[9]));                           
+                            spisPrzedmiotow.Add(new Przedmiot(dane[0], dane[1], dane[2], id, x, y, newitem, xsciany, ysciany, dane[9]));
                         }
                     }
                 }
             }
+            else
+            bladWczytywania = true;
         }
+
         public void WczytywanieDrzwi()//wczytuje opisy drzwi
         {
             if (File.Exists("Drzwi.txt") == true)
@@ -182,7 +185,7 @@ namespace Gra
                     {
                         int id;
                         if (int.TryParse(dane[1], out id) == false)
-                        bladWczytywania = true;
+                            bladWczytywania = true;
                         else
                         {
                             spisDrzwi.Add(new Drzwi(dane[0], id));
@@ -190,6 +193,8 @@ namespace Gra
                     }
                 }
             }
+            else
+            bladWczytywania = true;
         }
 
         public void KonczeniePoziomu(ref Gracz Player)
@@ -277,7 +282,7 @@ namespace Gra
 
         public void OgladanieDrzwi(Gracz Player, ref Pole pole)
         {
-            tekst.Add("Widzisz " + spisDrzwi[pole.idPrzedmiotu-1].opis + ". \n");
+            tekst.Add("Widzisz " + spisDrzwi[pole.idPrzedmiotu - 1].opis + ". \n");
         }
     }
 }
