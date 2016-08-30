@@ -13,7 +13,7 @@ i tak nie ma drzwi do ksiegi lol;12
 pomnik jakiegos moznowladcy. W prawej rece dzierzy miecz, a lewa ma opuszczona, przy czym ta druga jest lekko obdarta na palcu serdecznym.;13
 ciagnacy sie przez korytarz zbiornik wodny. Jako ze nie umiesz plywac i nie wiesz jak gleboki jest, nie ryzykujesz chocby zamoczenia palca.;14
 dziure we wschodniej scianie korytarza. Sciana jest popekana, ale samemu nie uda ci sie jej zniszczyc.;15
-mocno przymocowana pochodnia, raczej nie ma szans n;16
+nastepne zamkniete na zamek drzwi. Chyba wiesz co trzeba zrobic.;16
 nie ma drzwi do kartki z szyfrem;17
 przebijajace sie przez sufit kolczaste korzenie jakiejs rosliny. Trzeba sie jakos ich pozbyc.;18
 zwyczajna studnie, w srodku jest nawet woda, ale brakuje wiadra.;19
@@ -21,3 +21,5 @@ ogien, ktory wystrzelil spod posadzki korytarza. To musi byc jakas dawno aktywow
 kamienny nagrobek z dawno zatartym napisem. Sadzac po swiezej ziemi, ktos niedawno musial tu cos zakopac.;21
 zaskakujaca lekka trumne, ktorej wieka nie potrafisz otworzyc. Gdyby tylko je czyms podwazyc...;22
 kolejne drzwi z zamkiem. Zza krat na wysokosci glowy do lochu wpadaja sloneczne promienie. Czy to juz wolnosc?;23
+krate blokujaca przejscie dalej;24
+zamkniete drzwi bez zadnego zamka. Jakos musi sie je dac otworzyc...;25

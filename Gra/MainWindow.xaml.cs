@@ -64,7 +64,7 @@ namespace Gra
                         mapa.WypisywanieTesktu();
                         textBox.Text = mapa.wypisywanie;
                     }
-                    else if (pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
+                    else if (pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi || pole.rodzaj == Pole.Rodzaj.Przelacznik)
                     {
                         mapa.tekst.Add(mapa.TekstPrzedmiot() + "\n");
                         mapa.WypisywanieTesktu();
@@ -86,7 +86,7 @@ namespace Gra
             }
             else
             {
-                mapa.tekst.Add("GRATULACJE UKONCZYLES GRE!!! \n");
+                mapa.tekst.Add("Udało ci się wydostać z podziemia, czym kończy się twoja przygoda w Labiryncie Lochu Naphillion. Gratulacje! \n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
@@ -112,7 +112,7 @@ namespace Gra
                         mapa.WypisywanieTesktu();
                         textBox.Text = mapa.wypisywanie;
                     }
-                    else if (pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
+                    else if (pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi || pole.rodzaj == Pole.Rodzaj.Przelacznik)
                     {
                         mapa.tekst.Add(mapa.TekstPrzedmiot() + "\n");
                         mapa.WypisywanieTesktu();
@@ -134,7 +134,7 @@ namespace Gra
             }
             else
             {
-                mapa.tekst.Add("GRATULACJE UKONCZYLES GRE!!! \n");
+                mapa.tekst.Add("Udało ci się wydostać z podziemia, czym kończy się twoja przygoda w Labiryncie Lochu Naphillion. Gratulacje! \n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
@@ -160,7 +160,7 @@ namespace Gra
                         mapa.WypisywanieTesktu();
                         textBox.Text = mapa.wypisywanie;
                     }
-                    else if (pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
+                    else if (pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi || pole.rodzaj == Pole.Rodzaj.Przelacznik)
                     {
                         mapa.tekst.Add(mapa.TekstPrzedmiot() + "\n");
                         mapa.WypisywanieTesktu();
@@ -182,7 +182,7 @@ namespace Gra
             }
             else
             {
-                mapa.tekst.Add("GRATULACJE UKONCZYLES GRE!!! \n");
+                mapa.tekst.Add("Udało ci się wydostać z podziemia, czym kończy się twoja przygoda w Labiryncie Lochu Naphillion. Gratulacje! \n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
@@ -209,7 +209,7 @@ namespace Gra
                         mapa.WypisywanieTesktu();
                         textBox.Text = mapa.wypisywanie;
                     }
-                    else if (pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi)
+                    else if (pole.rodzaj == Pole.Rodzaj.Przedmiot || pole.rodzaj == Pole.Rodzaj.Drzwi || pole.rodzaj == Pole.Rodzaj.Przelacznik)
                     {
                         mapa.tekst.Add(mapa.TekstPrzedmiot() + "\n");
                         mapa.WypisywanieTesktu();
@@ -231,7 +231,7 @@ namespace Gra
             }
             else
             {
-                mapa.tekst.Add("GRATULACJE UKONCZYLES GRE!!! \n");
+                mapa.tekst.Add("Udało ci się wydostać z podziemia, czym kończy się twoja przygoda w Labiryncie Lochu Naphillion. Gratulacje! \n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
             }
@@ -251,6 +251,12 @@ namespace Gra
                 {
 
                     mapa.tekst.Add(mapa.LosowyTekst() + "\n");
+                    mapa.WypisywanieTesktu();
+                    textBox.Text = mapa.wypisywanie;
+                }
+                else if (pole.rodzaj == Pole.Rodzaj.Przelacznik)
+                {
+                    mapa.tekst.Add("Widzisz na ścianie przełącznik. \n");
                     mapa.WypisywanieTesktu();
                     textBox.Text = mapa.wypisywanie;
                 }
@@ -330,7 +336,7 @@ namespace Gra
 
                     if (Player.koniecGry == true)
                     {
-                        textBox.Text = "GRATULACJE UKONCZYLES GRE!!! \n";
+                        textBox.Text = "Udało ci się wydostać z podziemia, czym kończy się twoja przygoda w Labiryncie Lochu Naphillion. Gratulacje!\n";
                         NButtton.IsEnabled = true;
                         SButton.IsEnabled = true;
                         EButton.IsEnabled = true;
@@ -353,7 +359,7 @@ namespace Gra
                             mapa.wczytywanie = true;
                         }
                         else
-                            textBox.Text = "Blad wczytywania! Czyzbys grzebal w plikach?";
+                            textBox.Text = "Błąd wczytywania! Czyżbyś grzebał w plikach?";
 
                     }
                 }
@@ -364,7 +370,7 @@ namespace Gra
             }
             else
             {
-                textBox.Text = "Juz wczytano. Jesli chcesz wczytac wczesniejsze postepy uruchom gre ponownie. \n";
+                textBox.Text = "Już wczytano. Jeśli chcesz wczytać wcześniejsze postępy, uruchom grę ponownie. \n";
             }
         }
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -392,11 +398,33 @@ namespace Gra
 
         private void UseButton_Click(object sender, RoutedEventArgs e)
         {
-            if (listBox.SelectedItem == null)
+            int polex = Player.x;
+            int poley = Player.y;
+            Pole pole = mapa.mapa[polex, poley];
+            if (listBox.SelectedItem == null && pole.rodzaj != Pole.Rodzaj.Przelacznik)
             {
-                mapa.tekst.Add("Powietrza nie użyjesz do czego innego niz oddychanie! \n");
+                mapa.tekst.Add("Powietrza nie użyjesz do czego innego niż oddychanie! \n");
                 mapa.WypisywanieTesktu();
                 textBox.Text = mapa.wypisywanie;
+            }
+            else if (listBox.SelectedItem == null && pole.rodzaj == Pole.Rodzaj.Przelacznik)
+            {
+                mapa.tekst.Add("Pociągnąłeś za wajchę i usłyszałeś, że gdzieś musiało się otworzyć przejście \n");
+                mapa.WypisywanieTesktu();
+                textBox.Text = mapa.wypisywanie;
+                if (pole.idPrzedmiotu == 1)
+                {
+                    mapa.mapa[6,17].rodzaj = Pole.Rodzaj.Puste;
+                    mapa.mapa[6, 17].idPrzedmiotu = 0;
+                    mapa.mapa[6, 18].rodzaj = Pole.Rodzaj.Puste;
+                }
+                if (pole.idPrzedmiotu == 2)
+                {
+                    mapa.mapa[10, 2].rodzaj = Pole.Rodzaj.Puste;
+                    mapa.mapa[10, 2].idPrzedmiotu = 0;
+                    mapa.mapa[11, 2].rodzaj = Pole.Rodzaj.Puste;
+                }
+
             }
             else {
                 string nazwa = listBox.SelectedItem.ToString();
@@ -420,11 +448,12 @@ namespace Gra
                     if(wybranyPrzedmiot.newitem == true)
                     {
 
-                        Player.ekwipunek.Remove(Player.ekwipunek[nrprzedmiotu]);
+                        Player.ekwipunek.Remove(Player.ekwipunek[nrprzedmiotu - 1]);
                         listBox.Items.Remove(wybranyPrzedmiot.nazwa);
                         Player.ekwipunek.Add(mapa.spisPrzedmiotow[wybranyPrzedmiot.id+1]);
                         listBox.Items.Add(mapa.spisPrzedmiotow[wybranyPrzedmiot.id + 1].nazwa);
-                        mapa.tekst.Add("Uzyskales " + mapa.spisPrzedmiotow[wybranyPrzedmiot.id + 1].nazwa + " /n");
+                        mapa.tekst.Add(wybranyPrzedmiot.uzycie + "\n");
+                        mapa.tekst.Add("Uzyskales " + mapa.spisPrzedmiotow[wybranyPrzedmiot.id + 1].nazwa + " \n");
                         if (wybranyPrzedmiot.id == 7)
                         {
                             mapa.mapa[wybranyPrzedmiot.x, wybranyPrzedmiot.y].rodzaj = Pole.Rodzaj.Drzwi;
@@ -451,7 +480,7 @@ namespace Gra
 
                 else
                 {
-                    mapa.tekst.Add("Sprobowales uzyc " + wybranyPrzedmiot.nazwa+ " ale nic sie nie stalo. \n");
+                    mapa.tekst.Add("Spróbowałeś użyć " + wybranyPrzedmiot.nazwa+ ", ale nic się nie stało. \n");
                     mapa.WypisywanieTesktu();
                     textBox.Text = mapa.wypisywanie;
                 }

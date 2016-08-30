@@ -23,7 +23,7 @@ namespace Gra
         public bool wczytywanie=false;//okresla czy gra zostala wczytana
         public int nrZapisu;//okresla z ktorego pliku wczytywac/zapisywac gre
         public string[] tekstyPustePole = new string[] { "Nic tu nie ma.", "Nie znajdujesz niczego.", "Widzisz pustą podłogę." }; //zbior tekstow, ktore moga wyswietlic sie gdy patrzysz na puste pole(zeby nie bylo nudno!)
-        public string[] tekstyPolePrzedmiot = new string[] { "Wydaje ci sie, ze dostrzegasz cos w ciemnosci.", "Pomimo wszechobecnego mroku udalo ci sie cos znalezc.", "Po omacku dotarles do jakiegos przedmiotu." };//zbiór tekstów które wyświetlają się po wejściu na pole z przedmiotem
+        public string[] tekstyPolePrzedmiot = new string[] { "Wydaje ci się, że dostrzegasz coś w ciemności.", "Pomimo wszechobecnego mroku udało ci się coś znaleźć.", "Po omacku dotarłeś do jakiegoś obiektu." };//zbiór tekstów które wyświetlają się po wejściu na pole z przedmiotem
         public Mapa(int wyskosc, int szerokosc,int x, int y)
         {
             wysokoscMapy = wyskosc;
@@ -116,6 +116,11 @@ namespace Gra
                                 {
                                     mapa[x, y] = new Pole(x, y, id);
                                     mapa[x, y].rodzaj = Pole.Rodzaj.Drzwi;
+                                }
+                                else if (dane[2] == "Przelacznik")
+                                {
+                                    mapa[x, y] = new Pole(x, y, id);
+                                    mapa[x, y].rodzaj = Pole.Rodzaj.Przelacznik;
                                 }
                                 else
                                     bladWczytywania = true;
@@ -229,10 +234,10 @@ namespace Gra
                         }
                     case 3:
                         {
-                            koniecX = 26;
-                            koniecY = 13;
-                            Player.x = 26;
-                            Player.y = 0;
+                            koniecX = 13;
+                            koniecY = 26;
+                            Player.x = 0;
+                            Player.y = 26;
                             break;
                         }
                     case 4:
@@ -269,7 +274,7 @@ namespace Gra
         {
             
                 Player.ekwipunek.Add(spisPrzedmiotow[pole.idPrzedmiotu-1]);
-                tekst.Add("Podniosles " + spisPrzedmiotow[pole.idPrzedmiotu-1].nazwa + ". \n");
+                tekst.Add("Podniosłeś " + spisPrzedmiotow[pole.idPrzedmiotu-1].nazwa + ". \n");
                 pole.rodzaj = Pole.Rodzaj.Puste;
                 pole.idPrzedmiotu = 0;
                 Player.iloscPrzedmiotow++;           
