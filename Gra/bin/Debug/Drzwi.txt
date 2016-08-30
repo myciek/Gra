@@ -1,5 +1,5 @@
 zamkniete, drewniane drzwi z zamkiem.;1
-uchwyt na scianie, prawdopodobnie na pochodnie.;2
+lustro, na tyle brudne, ze twoje odbicie wyglada jedynie jak ciemna sylwetka.;2
 pajeczyne blokujaca przejscie przez korytarz.;3
 kolejne zamkniete drzwi.;4
 szczeline w suficie, przez ktora skapuje woda.;5

@@ -1,6 +1,6 @@
 Zloty Klucz;Zloty klucz, wydaje sie pasowac do jakichs drzwi.;polyskujacy na ciemnej posadzce zloty przedmiot.;1;15;9;false;16;9;Udalo ci sie otworzyc drzwi kluczem.
-Pochodnia;Plonaca pochodnia; niezbyt solidnie przymocowana do sciany pochodnia;2;22;5;false;22;1;Wlozyles pochodnie do pustego uchwytu, uslyszales ze w pomieszczeniu otworzylo sie przejscie.
-Zlamana Pochodnia;Zlamana, plonaca pochodnia, wypadla z uchwytu na sciane; lezaca na ziemi plonaca pochodnia;3;25;12;false;24;12;Podpaliles pajeczyne za pomoca pochodni.
+Kamien;Spory kamien, bardzo ciezki. Z pewnoscia mozesz nim rozbic niejedna przeszkode na swojej drodze.; lezacy na ziemi spory kamien.;2;22;2;false;22;1;Rozbiles lustro, za ktorym krylo sie przejscie dalej.
+Pochodnia;Plonaca pochodnia.; wiszaca na sciane plonaca pochodnia;3;25;12;false;24;12;Podpaliles pajeczyne za pomoca pochodni.
 Srebrny Klucz;Klucze maja to do siebie, ze otwieraja drzwi; lezacy na posadzce klucz;4;9;24;false;10;24;Otworzyles drzwi za pomoca klucza.
 Butelka;Pusta, szklana butelka. Bez zawartosci wydaje sie raczej nieprzydatna.; pusta, szklana butelke lezaca na drewnianej poleczce.;5;8;18;true;30;25;Napelniles butelke woda skapujaca z sufitu.
 Butelka z woda;Szklana butelka wypelniona woda.; lezaca na ziemi butelka wody.;6;29;25;false;29;25;Napelniles butelke z woda mchem.
