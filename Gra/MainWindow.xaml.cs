@@ -26,13 +26,12 @@ namespace Gra
         {
             
             InitializeComponent();
-            textBox.Text = "Witaj,wybierz slot i wczytaj gre za pomocą Load (jesli nie zapisywales wczesniej gry na slocie, ktory wybrales, rozpoczniesz nowa gre).";
+            textBox.Text = "Witamy w Labiryncie Lochu Naphilion. Jest to połączenie gry typu dungeon crawler z przygodową. Przemieszczanie odbywa się za pośrednictwem przycisków N,S,W,E. Za pomocą klawisza Take można podnosić znalezione przedmioty. Za pomocą klawisza Look można oglądać przedmioty po uprzednim wybraniu ich w ekwipunku (lista po prawej stronie) lub oglądać sam loch. Za pomocą klawisza Use można korzystać z przedmiotów z ekwipunku lub przełączników w lochu. Możesz także zapisać grę naciskając przycisk Save, aby nie stracić postępów po wyłączeniu gry. Jeżeli nie zapisywałeś na którymś slocie, wczytując go uruchomisz nową grę. Miłej zabawy!";
             listBox.Items.Add("Save1");
             listBox.Items.Add("Save2");
             listBox.Items.Add("Save3");
             listBox.Items.Add("Save4");
             listBox.Items.Add("Save5");
-            
             NButtton.IsEnabled = false;
             SButton.IsEnabled = false;
             EButton.IsEnabled = false;
@@ -59,7 +58,7 @@ namespace Gra
                     int poley = Player.y;
                     Pole pole = mapa.mapa[polex, poley];
                     Player.Wschod(pole, Player);
-                    if (pole.rodzaj == Pole.Rodzaj.Sciana && mapa.mapa[Player.x, Player.y].rodzaj != Pole.Rodzaj.Drzwi)
+                    if (pole.rodzaj == Pole.Rodzaj.Sciana)
                     {
                         mapa.tekst.Add("Napotykasz ścianę \n");
                         mapa.WypisywanieTesktu();
@@ -107,7 +106,7 @@ namespace Gra
                     int poley = Player.y;
                     Pole pole = mapa.mapa[polex, poley];
                     Player.Zachod(pole, Player);
-                    if (pole.rodzaj == Pole.Rodzaj.Sciana && mapa.mapa[Player.x, Player.y].rodzaj != Pole.Rodzaj.Drzwi)
+                    if (pole.rodzaj == Pole.Rodzaj.Sciana)
                     {
                         mapa.tekst.Add("Napotykasz ścianę \n");
                         mapa.WypisywanieTesktu();
@@ -155,7 +154,7 @@ namespace Gra
                     int poley = Player.y + 1;
                     Pole pole = mapa.mapa[polex, poley];
                     Player.Poludnie(pole, Player);
-                    if (pole.rodzaj == Pole.Rodzaj.Sciana && mapa.mapa[Player.x, Player.y].rodzaj != Pole.Rodzaj.Drzwi)
+                    if (pole.rodzaj == Pole.Rodzaj.Sciana)
                     {
                         mapa.tekst.Add("Napotykasz ścianę \n");
                         mapa.WypisywanieTesktu();
@@ -204,7 +203,7 @@ namespace Gra
                     int poley = Player.y - 1;
                     Pole pole = mapa.mapa[polex, poley];
                     Player.Polnoc(pole, Player);
-                    if (pole.rodzaj == Pole.Rodzaj.Sciana && mapa.mapa[Player.x,Player.y].rodzaj != Pole.Rodzaj.Drzwi)
+                    if (pole.rodzaj == Pole.Rodzaj.Sciana)
                     {
                         mapa.tekst.Add("Napotykasz ścianę \n");
                         mapa.WypisywanieTesktu();
@@ -423,22 +422,29 @@ namespace Gra
 
                         Player.ekwipunek.Remove(Player.ekwipunek[nrprzedmiotu]);
                         listBox.Items.Remove(wybranyPrzedmiot.nazwa);
-                        //    Player.ekwipunek.Add(spisPrzedmiotow[wybranyPrzedmiot.id+1]);
-                        //    listBox.Items.Add(nowyPrzedmiot.nazwa);
-                        //    mapa.tekst.Add("Uzyskales " + nowyPrzedmiot.nazwa + " /n";
+                        Player.ekwipunek.Add(mapa.spisPrzedmiotow[wybranyPrzedmiot.id+1]);
+                        listBox.Items.Add(mapa.spisPrzedmiotow[wybranyPrzedmiot.id + 1].nazwa);
+                        mapa.tekst.Add("Uzyskales " + mapa.spisPrzedmiotow[wybranyPrzedmiot.id + 1].nazwa + " /n");
                         if (wybranyPrzedmiot.id == 7)
                         {
                             mapa.mapa[wybranyPrzedmiot.x, wybranyPrzedmiot.y].rodzaj = Pole.Rodzaj.Drzwi;
                             mapa.mapa[wybranyPrzedmiot.x, wybranyPrzedmiot.y].idPrzedmiotu = 10;
                         }
-                        //    mapa.WypisywanieTesktu();
-                        //    textBox.Text = mapa.wypisywanie;
+                        if (wybranyPrzedmiot.id == 21)
+                        {
+                            mapa.mapa[wybranyPrzedmiot.x, wybranyPrzedmiot.y].rodzaj = Pole.Rodzaj.Drzwi;
+                            mapa.mapa[wybranyPrzedmiot.x, wybranyPrzedmiot.y].idPrzedmiotu = 22;
+                        }
+
+                        mapa.WypisywanieTesktu();
+                        textBox.Text = mapa.wypisywanie;
                     }
                     else
                     mapa.tekst.Add(wybranyPrzedmiot.uzycie + "\n");
                     mapa.mapa[wybranyPrzedmiot.xsciany, wybranyPrzedmiot.ysciany].idPrzedmiotu = 0;
                     mapa.mapa[wybranyPrzedmiot.xsciany, wybranyPrzedmiot.ysciany].rodzaj = Pole.Rodzaj.Puste;
-                   
+                    mapa.mapa[wybranyPrzedmiot.x, wybranyPrzedmiot.y].rodzaj = Pole.Rodzaj.Puste;
+                    mapa.mapa[wybranyPrzedmiot.x, wybranyPrzedmiot.y].idPrzedmiotu = 0;
                     mapa.WypisywanieTesktu();
                     textBox.Text = mapa.wypisywanie;
                 }

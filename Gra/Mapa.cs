@@ -213,8 +213,8 @@ namespace Gra
 
                     case 1:
                         {
-                            koniecX = 24;
-                            koniecY = 11;
+                            koniecX = 11;
+                            koniecY = 24;
                             Player.x = 0;
                             Player.y = 10;
                             break;
